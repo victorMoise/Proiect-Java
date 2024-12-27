@@ -1,0 +1,192 @@
+{
+  "Login": {
+    "Error": {
+      "UsernameAndPasswordRequired": "Please enter a username and password",
+      "UsernameRequired": "Please enter a username",
+      "PasswordRequired": "Please enter a password",
+      "InvalidCredentials": "Username or password are invalid"
+    },
+    "NoAccount": "Don't have an account?",
+    "CreateAccount": "Create account",
+    "LoginButton": "Login",
+    "Login": "Login"
+  },
+  "InputFields": {
+    "Username": "Username",
+    "Password": "Password",
+    "Email": "Email",
+    "ConfirmPassword": "Confirm password",
+    "TogglePasswordVisibility": "toggle password visibility",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "PhoneNumber": "Phone number",
+    "Address": "Address"
+  },
+  "Signup": {
+    "Error": {
+      "AllFieldsRequired": "Please fill in all fields",
+      "UsernameRequired": "Please enter a username",
+      "PasswordRequired": "Please enter a password",
+      "EmailRequired": "Please enter an email",
+      "ConfirmPasswordRequired": "Please confirm your password",
+      "PasswordsDoNotMatch": "Passwords do not match"
+    },
+    "Signup": "Signup",
+    "SignupButton": "Sign up",
+    "AlreadyHaveAnAccount": "Already have an account?",
+    "Login": "Login",
+    "UsernameOrEmailAlreadyExists": "An account with this username or email already exists"
+  },
+  "Sidebar": {
+    "Home": "Home",
+    "Profile": "Profile",
+    "Logout": "Logout",
+    "Admin": "Admin",
+    "Technician": "Technician"
+  },
+  "Profile": {
+    "ProfileDetails": "Profile details",
+    "SaveChanges": "Save changes",
+    "ProfileUpdated": "Profile updated successfully",
+    "ErrorFetchingData": "Error fetching data"
+  },
+  "Home": {
+    "DeviceList": {
+      "AddDevice": "Add device",
+      "EditDevice": "Edit device",
+      "Title": "My devices",
+      "ErrorSavingDevice": "Error saving device",
+      "SavedSuccessfully": "Device saved successfully",
+      "DeletedSuccessfully": "Device deleted successfully",
+      "ErrorFetchingDevices": "Error fetching devices",
+      "UpdatedSuccessfully": "Device updated successfully",
+      "Error": {
+        "DeviceNotFound": "Device not found",
+        "InUse": "This device has active service requests and cannot be deleted",
+        "NullDevice": "Received null device",
+        "AllFieldsRequired": "Please fill in all fields",
+        "FetchingError": "Error fetching devices"
+      }
+    },
+    "General": {
+      "Error": {
+        "NoUser": "This user does not exist"
+      }
+    },
+    "ServiceRequestList": {
+      "Title": "My service requests",
+      "AddRequest": "Add request",
+      "SavedSuccessfully": "Service request saved successfully",
+      "Error": {
+        "ServiceRequestNotFound": "Service request not found",
+        "ErrorDeletingRequest": "Error deleting service request"
+      }
+    },
+    "InvoiceList": {
+      "Title": "My invoices"
+    }
+  },
+  "BackendErrors": {
+    "UserAlreadyExists": "A user with this username or email already exists",
+    "EmptyUsername": "Received empty username",
+    "EmptyEmail": "Received empty email",
+    "EmptyPassword": "Received empty password",
+    "WeakPassword": "Password must be at least 8 characters long",
+    "InvalidEmail": "Invalid email address",
+    "InvalidCredentials": "Invalid username or password"
+  },
+  "BackendMessages": {
+    "UserRegistered": "User registered successfully"
+  },
+  "Admin": {
+    "UserList": "User list",
+    "DeviceList": "Device list",
+    "ErrorFetchingUsers": "Error fetching users"
+  },
+  "Device": {
+    "Id": "Id",
+    "Client": "Client",
+    "Type": "Type",
+    "Brand": "Brand",
+    "Model": "Model",
+    "SerialNumber": "Serial number",
+    "Name": "Name"
+  },
+  "ServiceRequest": {
+    "IssueDescription": "Issue description",
+    "RequestDate": "Request date",
+    "Status": "Status",
+    "Device": "Device",
+    "PaymentAmount": "Payment amount",
+    "PaymentStatus": "Payment status"
+  },
+  "User": {
+    "Id": "Id",
+    "Username": "Username",
+    "Email": "Email",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "PhoneNumber": "Phone number",
+    "Address": "Address",
+    "Role": "Role"
+  },
+  "Common": {
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "Actions": "Actions",
+    "Close": "Close",
+    "Pay": "Pay",
+    "Paid": "Paid"
+  },
+  "Technician": {
+    "Request": {
+      "Title": "Service requests",
+      "ServiceType": "Service type",
+      "LogWork": "Log work",
+      "LogWorkSuccess": "Work logged successfully",
+      "MyWork": "My work history",
+      "DeleteWorkSuccess": "Worklog deleted successfully",
+      "CreateInvoiceSuccess": "Invoice created successfully",
+      "RevokeInvoiceSuccess": "Invoice revoked successfully",
+      "Notes": "Notes",
+      "Button": {
+        "Start": "Start",
+        "Complete": "Complete",
+        "Completed": "Completed",
+        "Stop": "Stop",
+        "Reopen": "Reopen",
+        "LogWork": "Log work",
+        "Invoice": "Invoice",
+        "Invoiced": "Invoiced",
+        "UnInvoice": "Revoke"
+      },
+      "Error": {
+        "ServiceRequestNotFound": "Service request not found"
+      }
+    }
+  },
+  "ServiceLogsList": {
+    "Id": "Id",
+    "DeviceName": "Device name",
+    "DateLogged": "Date logged",
+    "Notes": "Notes",
+    "ServiceTypeName": "Service type",
+    "ClientName": "Client name"
+  },
+  "Invoices": {
+    "Error": {
+      "NoWorkDone": "No work has been done on this service request",
+      "PaymentError": "Error processing payment"
+    },
+    "ServiceLogs": {
+      "Title": "Invoice Details",
+      "TechnicianName": "Technician name",
+      "ServiceDate": "Service date",
+      "IssueDescription": "Issue description",
+      "Notes": "Technician notes",
+      "ServiceTypeName": "Service type",
+      "ServiceTypePrice": "Price",
+      "ServiceLog": "Repair entry"
+    }
+  }
+}

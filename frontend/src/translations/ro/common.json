@@ -1,0 +1,193 @@
+{
+  "Login": {
+    "Error": {
+      "UsernameAndPasswordRequired": "Introduceti un nume de utilizator si o parola",
+      "UsernameRequired": "Introduceti un nume de utilizator",
+      "PasswordRequired": "Introduceti o parola",
+      "InvalidCredentials": "Numele de utilizator sau parola sunt invalide"
+    },
+    "NoAccount": "Nu aveti un cont?",
+    "CreateAccount": "Creeaza cont",
+    "LoginButton": "Login",
+    "Login": "Login"
+  },
+  "InputFields": {
+    "Username": "Nume de utilizator",
+    "Password": "Parola",
+    "Email": "Email",
+    "ConfirmPassword": "Confirma parola",
+    "TogglePasswordVisibility": "comuta vizibilitatea parolei",
+    "FirstName": "Prenume",
+    "LastName": "Nume",
+    "PhoneNumber": "Numar de telefon",
+    "Address": "Adresa"
+  },
+  "Signup": {
+    "Error": {
+      "AllFieldsRequired": "Va rugam sa completati toate campurile",
+      "UsernameRequired": "Va rugam sa introduceti un nume de utilizator",
+      "PasswordRequired": "Va rugam sa introduceti o parola",
+      "EmailRequired": "Va rugam sa introduceti un email",
+      "ConfirmPasswordRequired": "Va rugam sa confirmati parola",
+      "PasswordsDoNotMatch": "Parolele nu se potrivesc"
+    },
+    "Signup": "Inregistrare",
+    "SignupButton": "Creeaza cont",
+    "AlreadyHaveAnAccount": "Aveti deja un cont?",
+    "Login": "Login",
+    "UsernameOrEmailAlreadyExists": "Un cont cu acest nume de utilizator sau email exista deja"
+  },
+  "Sidebar": {
+    "Home": "Acasa",
+    "Profile": "Profil",
+    "Logout": "Delogare",
+    "Admin": "Admin",
+    "Technician": "Tehnician"
+  },
+  "Profile": {
+    "ProfileDetails": "Detalii profil",
+    "SaveChanges": "Salveaza modificarile",
+    "ProfileUpdated": "Profil actualizat cu succes",
+    "ErrorFetchingData": "Eroare la preluarea datelor"
+  },
+  "Home": {
+    "DeviceList": {
+      "AddDevice": "Adauga dispozitiv",
+      "EditDevice": "Editeaza dispozitiv",
+      "Title": "Dispozitivele mele",
+      "ErrorSavingDevice": "Eroare la salvarea dispozitivului",
+      "SavedSuccessfully": "Dispozitiv salvat cu succes",
+      "ErrorDeletingDevice": "Eroare la stergerea dispozitivului",
+      "DeletedSuccessfully": "Dispozitiv sters cu succes",
+      "ErrorFetchingDevices": "Eroare la preluarea dispozitivelor",
+      "UpdatedSuccessfully": "Dispozitiv actualizat cu succes",
+      "Error": {
+        "DeviceNotFound": "Dispozitivul nu a fost gasit",
+        "InUse": "Dispozitivul are cereri de service in asteptare",
+        "NullDevice": "Dispozitivul primit este null",
+        "AllFieldsRequired": "Va rugam sa completati toate campurile",
+        "FetchingError": "Eroare la preluarea dispozitivelor"
+      }
+    },
+    "General": {
+      "Error": {
+        "NoUser": "Acest utilizator nu exista"
+      }
+    },
+    "ServiceRequestList": {
+      "Title": "Cererile mele de service",
+      "AddRequest": "Adauga cerere",
+      "SavedSuccessfully": "Cerere de service salvata cu succes",
+      "Error": {
+        "ServiceRequestNotFound": "Cererea de service nu a fost gasita",
+        "ErrorDeletingRequest": "Eroare la stergerea cererii de service"
+      }
+    },
+    "InvoiceList": {
+      "Title": "Facturile mele"
+    }
+  },
+  "BackendErrors": {
+    "UserAlreadyExists": "Un utilizator cu acest nume de utilizator sau email exista deja",
+    "EmptyUsername": "Numele de utilizator primit este gol",
+    "EmptyEmail": "Emailul primit este gol",
+    "EmptyPassword": "Parola primita este goala",
+    "WeakPassword": "Parola trebuie sa aiba cel putin 8 caractere",
+    "InvalidEmail": "Adresa de email invalida",
+    "InvalidCredentials": "Nume de utilizator sau parola invalide"
+  },
+  "BackendMessages": {
+    "UserRegistered": "Utilizator inregistrat cu succes"
+  },
+  "Admin": {
+    "UserList": "Lista utilizatori",
+    "DeviceList": "Lista dispozitive",
+    "ErrorFetchingUsers": "Eroare la preluarea utilizatorilor"
+  },
+  "Device": {
+    "Id": "Id",
+    "Client": "Client",
+    "Type": "Tip",
+    "Brand": "Brand",
+    "Model": "Model",
+    "SerialNumber": "Numar de serie",
+    "Name": "Nume"
+  },
+  "ServiceRequest": {
+    "IssueDescription": "Descriere problema",
+    "RequestDate": "Data cererii",
+    "Status": "Status",
+    "Device": "Dispozitiv",
+    "PaymentAmount": "Suma de plata",
+    "PaymentStatus": "Status plata"
+  },
+  "User": {
+    "Id": "Id",
+    "Username": "Nume de utilizator",
+    "Email": "Email",
+    "FirstName": "Prenume",
+    "LastName": "Nume",
+    "PhoneNumber": "Numar de telefon",
+    "Address": "Adresa",
+    "Role": "Rol"
+  },
+  "Common": {
+    "Cancel": "Anuleaza",
+    "Save": "Salveaza",
+    "Actions": "Actiuni",
+    "Close": "Inchide",
+    "Pay": "Plateste",
+    "Paid": "Platit"
+  },
+  "Technician": {
+    "Request": {
+      "Title": "Cereri de service",
+      "LogWork": "Inregistreaza munca",
+      "LogWorkSuccess": "Munca inregistrata cu succes",
+      "ServiceType": "Tip service",
+      "MyWork": "Istoric munca",
+      "Notes": "Notite",
+      "DeleteWorkSuccess": "Inregistrarea muncii a fost stearsa cu succes",
+      "CreateInvoiceSuccess": "Factura creata cu succes",
+      "RevokeInvoiceSuccess": "Factura anulata cu succes",
+      "Button": {
+        "Start": "Start",
+        "Complete": "Finalizeaza",
+        "Completed": "Finalizat",
+        "Stop": "Stop",
+        "Reopen": "Re-deschide",
+        "LogWork": "Ponteaza munca",
+        "Invoice": "Factureaza",
+        "Invoiced": "Facturat",
+        "UnInvoice": "Invalideaza"
+      },
+      "Error": {
+        "ServiceRequestNotFound": "Cererea de service nu a fost gasita"
+      }
+    }
+  },
+  "ServiceLogsList": {
+    "Id": "Id",
+    "DeviceName": "Nume dispozitiv",
+    "DateLogged": "Data inregistrarii",
+    "Notes": "Notite",
+    "ServiceTypeName": "Tip serviciu",
+    "ClientName": "Nume client"
+  },
+  "Invoices": {
+    "Error": {
+      "InvoiceNotFound": "Factura nu a fost gasita",
+      "NoWorkDone": "Nu s-a efectuat nicio munca pentru aceasta cerere de service"
+    },
+    "ServiceLogs": {
+      "Title": "Detalii factura",
+      "TechnicianName": "Nume tehnician",
+      "ServiceDate": "Data serviciului",
+      "IssueDescription": "Descriere problema",
+      "Notes": "Notite tehnice",
+      "ServiceTypeName": "Tip serviciu",
+      "ServiceTypePrice": "Pret",
+      "ServiceLog": "Inregistrare reparatie"
+    }
+  }
+}
