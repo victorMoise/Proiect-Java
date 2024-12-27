@@ -4,7 +4,9 @@ import org.springframework.stereotype.Repository;
 import victor.java.api.model.User;
 import victor.java.repository.DatabaseManager;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -43,5 +45,28 @@ public class UserRepository implements IUserRepository {
                 .filter(u -> u.getUsername().equals(username))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public boolean addUser(String username, String email, String passwordHash) {
+        String query = "INSERT INTO Users (username, email, passwordHash, createdAt, roleId) VALUES (?, ?, ?, ?, ?)";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        try {
+            var statement = databaseManager.getConnection().prepareStatement(query);
+            statement.setString(1, username);
+            statement.setString(2, email);
+            statement.setString(3, passwordHash);
+
+            String date = sdf.format(new Date());
+            statement.setString(4, date);
+
+            // By default, the user is registered as a client
+            // 1 - admin, 2 - client, 3 - technician
+            statement.setInt(5, 2);
+
+            return statement.executeUpdate() > 0;
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to add user", ex);
+        }
     }
 }

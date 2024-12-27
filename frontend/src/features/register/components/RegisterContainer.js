@@ -44,43 +44,8 @@ const RegisterForm = () => {
       e.preventDefault();
       const { username, email, password, confirmPassword } = form;
 
-      if (!username || !email || !password || !confirmPassword) {
-        setErrors({
-          username: !username,
-          email: !email,
-          password: !password,
-          confirmPassword: !confirmPassword,
-        });
-
-        showToast(
-          t(
-            !username && !email && !password && !confirmPassword
-              ? "Signup.Error.AllFieldsRequired"
-              : !username
-              ? "Signup.Error.UsernameRequired"
-              : !email
-              ? "Signup.Error.EmailRequired"
-              : !password
-              ? "Signup.Error.PasswordRequired"
-              : "Signup.Error.ConfirmPasswordRequired"
-          ),
-          "error"
-        );
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        setErrors((prev) => ({
-          ...prev,
-          password: true,
-          confirmPassword: true,
-        }));
-        showToast(t("Signup.Error.PasswordsDoNotMatch"), "error");
-        return;
-      }
-
       try {
-        await registerUser(username, email, password);
+        await registerUser(username, email, password, confirmPassword);
         showToast(
           "Account created successfully. Redirecting to login...",
           "success"

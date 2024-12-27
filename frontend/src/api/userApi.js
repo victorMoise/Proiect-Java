@@ -20,12 +20,13 @@ export const loginUser = async (username, password) => {
   }
 };
 
-export const registerUser = async (username, email, password) => {
+export const registerUser = async (username, email, password, confirmPassword) => {
   try {
     const response = await instance.post("register", {
-      Username: username,
-      Email: email,
-      Password: password,
+      username,
+      email,
+      password,
+      confirmPassword
     });
 
     return response.data;

@@ -88,9 +88,11 @@
   },
   "BackendErrors": {
     "UserAlreadyExists": "A user with this username or email already exists",
-    "EmptyUsername": "Received empty username",
-    "EmptyEmail": "Received empty email",
-    "EmptyPassword": "Received empty password",
+    "EmptyUsername": "Please enter a username",
+    "EmptyEmail": "Please enter an email",
+    "EmptyPassword": "Please enter a password",
+    "EmptyConfirmPassword": "Please confirm your password",
+    "PasswordsDoNotMatch": "Passwords do not match",
     "WeakPassword": "Password must be at least 8 characters long",
     "InvalidEmail": "Invalid email address",
     "InvalidCredentials": "Invalid username or password"

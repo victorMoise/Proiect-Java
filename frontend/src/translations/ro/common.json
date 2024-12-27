@@ -89,9 +89,11 @@
   },
   "BackendErrors": {
     "UserAlreadyExists": "Un utilizator cu acest nume de utilizator sau email exista deja",
-    "EmptyUsername": "Numele de utilizator primit este gol",
-    "EmptyEmail": "Emailul primit este gol",
-    "EmptyPassword": "Parola primita este goala",
+    "EmptyUsername": "Va rugam sa introduceti un nume de utilizator",
+    "EmptyEmail": "Va rugam sa introduceti un email",
+    "EmptyPassword": "Va rugam sa introduceti o parola",
+    "EmptyConfirmPassword": "Va rugam sa confirmati parola",
+    "PasswordDoNotMatch": "Parolele nu se potrivesc",
     "WeakPassword": "Parola trebuie sa aiba cel putin 8 caractere",
     "InvalidEmail": "Adresa de email invalida",
     "InvalidCredentials": "Nume de utilizator sau parola invalide"
