@@ -31,24 +31,6 @@ function LoginForm() {
       e.preventDefault();
       const { username, password } = form;
 
-      if (!username || !password) {
-        setErrors({
-          username: !username,
-          password: !password,
-        });
-        showToast(
-          t(
-            !username && !password
-              ? "Login.Error.UsernameAndPasswordRequired"
-              : !username
-              ? "Login.Error.UsernameRequired"
-              : "Login.Error.PasswordRequired"
-          ),
-          "error"
-        );
-        return;
-      }
-
       try {
         const data = await loginUser(username, password);
         login(data.token, username);

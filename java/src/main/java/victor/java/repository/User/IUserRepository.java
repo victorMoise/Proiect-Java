@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IUserRepository {
     public List<User> getUsers();
+    public User getUser(String username);
 }

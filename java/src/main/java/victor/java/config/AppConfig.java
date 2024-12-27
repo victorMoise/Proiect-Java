@@ -6,7 +6,6 @@ import victor.java.repository.DatabaseManager;
 
 @Configuration
 public class AppConfig {
-
     @Bean
     public DatabaseManager databaseManager() {
         return new DatabaseManager();

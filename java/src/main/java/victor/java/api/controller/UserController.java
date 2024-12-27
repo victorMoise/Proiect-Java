@@ -1,12 +1,12 @@
 package victor.java.api.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import victor.java.api.model.User;
 import victor.java.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -19,5 +19,10 @@ public class UserController {
     @GetMapping("/user/list")
     public List<User> getUsers() {
         return userService.getAllUsers();
+    }
+
+    @PostMapping("/user/login")
+    public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
+        return userService.login(loginRequest);
     }
 }

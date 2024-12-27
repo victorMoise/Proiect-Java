@@ -37,4 +37,11 @@ public class UserRepository implements IUserRepository {
 
         return users;
     }
+
+    public User getUser(String username) {
+        return getUsers().stream()
+                .filter(u -> u.getUsername().equals(username))
+                .findFirst()
+                .orElse(null);
+    }
 }

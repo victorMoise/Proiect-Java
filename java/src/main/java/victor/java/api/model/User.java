@@ -1,10 +1,18 @@
 package victor.java.api.model;
 
+import java.util.Date;
+
 public class User {
     private int id;
     private String email;
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
+    private Date createdAt;
+    private int roleId;
 
     public User() {
     }
