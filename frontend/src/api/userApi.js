@@ -37,7 +37,7 @@ export const registerUser = async (username, email, password, confirmPassword) =
 
 export const getUserRole = async (username) => {
   try {
-    const response = await instance.get(`userRole?username=${username}`);
+    const response = await instance.get(`role?username=${username}`);
 
     return response.data;
   } catch (error) {
@@ -49,7 +49,7 @@ export const getUserInfo = async (username) => {
   try {
     const token = localStorage.getItem("token");
     const response = await instance.get(
-      `userInfo?username=${username}`,
+      `info?username=${username}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,17 +64,18 @@ export const getUserInfo = async (username) => {
 };
 
 export const updateUserInfo = async (username, data) => {
+  const storedUsername = localStorage.getItem("username");
   try {
     const token = localStorage.getItem("token");
     const response = await instance.put(
-      `userInfo?username=${username}`,
+      `info?username=${storedUsername}`,
       {
-        Username: data.username,
-        Email: data.email,
-        FirstName: data.firstName,
-        LastName: data.lastName,
-        PhoneNumber: data.phoneNumber,
-        Address: data.address,
+        username: data.username,
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phoneNumber: data.phoneNumber,
+        address: data.address,
       },
       {
         headers: {

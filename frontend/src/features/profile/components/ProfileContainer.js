@@ -28,9 +28,14 @@ const ProfileContainer = () => {
   };
 
   const handleSaveChanges = async () => {
-    await updateUserInfo(username, profileDetails);
-    showToast(t("Profile.ProfileUpdated"), "success");
-    updateUsernameInStorage(profileDetails.username);
+    try {
+      await updateUserInfo(username, profileDetails);
+      showToast(t("Profile.ProfileUpdated"), "success");
+      updateUsernameInStorage(profileDetails.username);
+    }
+    catch (error) {
+      showToast(t(error.response.data.message), "error");
+    }
   };
 
   useEffect(() => {

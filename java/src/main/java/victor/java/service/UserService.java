@@ -4,9 +4,11 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import victor.java.api.model.ResponseMessage;
 import victor.java.api.model.User;
 import victor.java.api.request.UserRegisterRequest;
+import victor.java.api.request.UserUpdateRequest;
 import victor.java.repository.User.IUserRepository;
 import victor.java.util.EmailValidator;
 import victor.java.util.JwtUtil;
@@ -49,10 +51,10 @@ public class UserService {
     }
 
     public ResponseEntity<?> register(UserRegisterRequest request) {
-        String username = request.getUsername();
-        String email = request.getEmail();
-        String password = request.getPassword();
-        String confirmPassword = request.getConfirmPassword();
+        String username = request.username();
+        String email = request.email();
+        String password = request.password();
+        String confirmPassword = request.confirmPassword();
 
         if (username == null || username.isEmpty())
             return ResponseEntity.badRequest().body(new ResponseMessage("BackendErrors.EmptyUsername"));
@@ -87,5 +89,62 @@ public class UserService {
                     .body(Collections.singletonMap("message", "BackendErrors.ErrorRegistering"));
 
         return ResponseEntity.ok(Collections.singletonMap("message", "User registered successfully"));
+    }
+
+    public ResponseEntity<?> getRole(String username) {
+        User user = userRepository.getUser(username);
+
+        if (user == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "User not found"));
+
+        String role = userRepository.getUserRole(username);
+        role = StringUtils.capitalize(role.toLowerCase());
+
+        return ResponseEntity.ok(Collections.singletonMap("roleDescription", role));
+    }
+
+    public ResponseEntity<?> getUserInfo(String username) {
+        User user = userRepository.getUser(username);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "User not found"));
+        }
+
+        return ResponseEntity.ok(user);
+    }
+
+    public ResponseEntity<?> updateUserInfo(String usernameRequest, UserUpdateRequest request) {
+        User user = userRepository.getUser(usernameRequest);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "User not found"));
+        }
+
+        String email = request.email();
+        String username = request.username();
+
+        if (email == null || email.isEmpty())
+            return ResponseEntity.badRequest().body(new ResponseMessage("BackendErrors.EmptyEmail"));
+
+        if (username == null || username.isEmpty())
+            return ResponseEntity.badRequest().body(new ResponseMessage("BackendErrors.EmptyUsername"));
+
+        if (!EmailValidator.isValid(email))
+            return ResponseEntity.badRequest().body(new ResponseMessage("BackendErrors.InvalidEmail"));
+
+        if (userRepository.getUser(username) != null && !username.equals(usernameRequest))
+            return ResponseEntity.badRequest().body(new ResponseMessage("BackendErrors.UserAlreadyExists"));
+
+        boolean updateResult = userRepository.updateUser(usernameRequest, request);
+
+        if (!updateResult) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "Failed to update user"));
+        }
+
+        return ResponseEntity.ok(Collections.singletonMap("message", "User updated successfully"));
     }
 }
