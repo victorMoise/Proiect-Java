@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://localhost:7170/api/ServiceRequests/";
+const API_BASE_URL = "http://localhost:8080/service-request";
 
 export const instance = axios.create({
   baseURL: API_BASE_URL,
@@ -12,7 +12,7 @@ export const getUsersServiceRequests = async () => {
   const username = localStorage.getItem("username");
   try {
     const response = await instance.get(
-      `serviceRequests?username=${username}`,
+      `/list?username=${username}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -30,10 +30,10 @@ export const addServiceRequest = async (serviceRequest) => {
   try {
     const token = localStorage.getItem("token");
     const response = await instance.post(
-      "serviceRequest",
+      "",
       {
-        DeviceId: serviceRequest.deviceId,
-        IssueDescription: serviceRequest.issueDescription,
+        deviceId: serviceRequest.deviceId,
+        issueDescription: serviceRequest.issueDescription,
       },
       {
         headers: {
@@ -52,7 +52,7 @@ export const deleteServiceRequest = async (serviceRequestId) => {
   const token = localStorage.getItem("token");
   try {
     const response = await instance.delete(
-      `serviceRequest?serviceRequestId=${serviceRequestId}`,
+      `/${serviceRequestId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

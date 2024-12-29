@@ -77,13 +77,17 @@
       "Title": "My service requests",
       "AddRequest": "Add request",
       "SavedSuccessfully": "Service request saved successfully",
+      "DeletedSuccessfully": "Service request deleted successfully",
       "Error": {
         "ServiceRequestNotFound": "Service request not found",
         "ErrorDeletingRequest": "Error deleting service request"
       }
     },
     "InvoiceList": {
-      "Title": "My invoices"
+      "Title": "My invoices",
+      "Error": {
+        "FetchingError": "Error fetching invoices"
+      }
     }
   },
   "BackendErrors": {
@@ -95,7 +99,8 @@
     "PasswordsDoNotMatch": "Passwords do not match",
     "WeakPassword": "Password must be at least 8 characters long",
     "InvalidEmail": "Invalid email address",
-    "InvalidCredentials": "Invalid username or password"
+    "InvalidCredentials": "Invalid username or password",
+    "DeviceHasServiceRequest": "This device has active service requests and cannot be deleted"
   },
   "BackendMessages": {
     "UserRegistered": "User registered successfully"

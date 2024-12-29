@@ -45,7 +45,7 @@ const ServiceRequestDialog = ({ open, handleClose, handleSave, devices }) => {
           margin="dense"
         >
           {devices.map((device) => (
-            <MenuItem key={device.deviceId} value={device.deviceId}>
+            <MenuItem key={device.id} value={device.id}>
               {device.brand} {device.model}
             </MenuItem>
           ))}

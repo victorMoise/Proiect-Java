@@ -61,7 +61,7 @@ public class DeviceService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(Collections.singletonMap("message", "Device not found"));
 
-        if (serviceRequestRepository.hasServiceRequest(deviceId))
+        if (serviceRequestRepository.deviceHasServiceRequest(deviceId))
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(Collections.singletonMap("message", "BackendErrors.DeviceHasServiceRequest"));
 

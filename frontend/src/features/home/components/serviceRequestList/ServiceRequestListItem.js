@@ -34,7 +34,7 @@ const ServiceRequestListItem = ({ request, index, onDelete }) => {
       <IconButton
         aria-label="delete"
         sx={{ position: "absolute", top: 8, right: 8 }}
-        onClick={() => onDelete(request.serviceRequestId)}
+        onClick={() => onDelete(request.id)}
       >
         <DeleteIcon />
       </IconButton>

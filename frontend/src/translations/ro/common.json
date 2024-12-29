@@ -78,6 +78,7 @@
       "Title": "Cererile mele de service",
       "AddRequest": "Adauga cerere",
       "SavedSuccessfully": "Cerere de service salvata cu succes",
+      "DeletedSuccessfully": "Cerere de service stearsa cu succes",
       "Error": {
         "ServiceRequestNotFound": "Cererea de service nu a fost gasita",
         "ErrorDeletingRequest": "Eroare la stergerea cererii de service"
@@ -96,7 +97,8 @@
     "PasswordDoNotMatch": "Parolele nu se potrivesc",
     "WeakPassword": "Parola trebuie sa aiba cel putin 8 caractere",
     "InvalidEmail": "Adresa de email invalida",
-    "InvalidCredentials": "Nume de utilizator sau parola invalide"
+    "InvalidCredentials": "Nume de utilizator sau parola invalide",
+    "DeviceHasServiceRequest": "Acest dispozitiv are cereri de service in asteptare si nu poate fi sters"
   },
   "BackendMessages": {
     "UserRegistered": "Utilizator inregistrat cu succes"
