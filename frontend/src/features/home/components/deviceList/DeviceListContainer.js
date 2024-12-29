@@ -40,7 +40,7 @@ const DeviceListContainer = () => {
   const handleSave = async (deviceData) => {
     try {
       if (isEdit) {
-        await updateDevice(selectedDevice.deviceId, deviceData);
+        await updateDevice(selectedDevice.id, deviceData);
         showToast(t("Home.DeviceList.UpdatedSuccessfully"), "success");
       } else {
         await addDevice(deviceData);

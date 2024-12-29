@@ -68,12 +68,13 @@ export const updateDevice = async (deviceId, device) => {
   try {
     const token = localStorage.getItem("token");
     const response = await instance.put(
-      `updateDevice?deviceId=${deviceId}`,
+      ``,
       {
-        DeviceType: device.type,
-        Brand: device.brand,
-        Model: device.model,
-        SerialNumber: device.serialNumber,
+        id: deviceId,
+        deviceType: device.type,
+        brand: device.brand,
+        model: device.model,
+        serialNumber: device.serialNumber,
       },
       {
         headers: {

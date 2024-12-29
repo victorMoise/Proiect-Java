@@ -4,9 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import victor.java.api.model.Device;
+import victor.java.api.model.ResponseMessage;
 import victor.java.api.model.User;
 import victor.java.api.request.DeviceAddRequest;
 import victor.java.repository.Device.IDeviceRepository;
+import victor.java.repository.ServiceRequest.IServiceRequestRepository;
 import victor.java.repository.User.IUserRepository;
 
 import java.util.Collections;
@@ -17,10 +19,12 @@ import java.util.List;
 public class DeviceService {
     private final IUserRepository userRepository;
     private final IDeviceRepository deviceRepository;
+    private final IServiceRequestRepository serviceRequestRepository;
 
-    public DeviceService(IUserRepository userRepository, IDeviceRepository deviceRepository) {
+    public DeviceService(IUserRepository userRepository, IDeviceRepository deviceRepository, IServiceRequestRepository serviceRequestRepository) {
         this.userRepository = userRepository;
         this.deviceRepository = deviceRepository;
+        this.serviceRequestRepository = serviceRequestRepository;
     }
 
     public ResponseEntity<?> getDeviceList(String username) {
@@ -51,12 +55,38 @@ public class DeviceService {
     }
 
     public ResponseEntity<?> deleteDevice(int deviceId) {
+        Device device = deviceRepository.getDevice(deviceId);
+
+        if (device == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "Device not found"));
+
+        if (serviceRequestRepository.hasServiceRequest(deviceId))
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("message", "BackendErrors.DeviceHasServiceRequest"));
+
         boolean deleteResult = deviceRepository.deleteDevice(deviceId);
 
         if (!deleteResult)
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(Collections.singletonMap("message", "Failed to delete device"));
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new ResponseMessage("Device with id " + deviceId + " deleted"));
+    }
+
+    public ResponseEntity<?> updateDevice(Device request) {
+        Device device = deviceRepository.getDevice(request.getId());
+
+        if (device == null)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "Device not found"));
+
+        boolean updateResult = deviceRepository.updateDevice(request);
+
+        if (!updateResult)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "Failed to update device"));
+
+        return ResponseEntity.ok(new ResponseMessage("Device with id " + request.getId() + " updated"));
     }
 }
