@@ -30,7 +30,7 @@ const DeviceListItem = ({ device, index, onDelete, onEdit }) => {
             <IconButton
               aria-label="delete"
               sx={{ color: "red" }}
-              onClick={() => onDelete(device.deviceId)}
+              onClick={() => onDelete(device.id)}
             >
               <DeleteIcon />
             </IconButton>

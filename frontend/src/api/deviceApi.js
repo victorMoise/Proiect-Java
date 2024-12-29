@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://localhost:7170/api/Devices/";
+const API_BASE_URL = "http://localhost:8080/device";
 
 export const instance = axios.create({
   baseURL: API_BASE_URL,
@@ -12,13 +12,13 @@ export const addDevice = async (device) => {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
     const response = await instance.post(
-      "add",
+      "",
       {
-        ClientName: username,
-        DeviceType: device.type,
-        Brand: device.brand,
-        Model: device.model,
-        SerialNumber: device.serialNumber
+        clientName: username,
+        deviceType: device.type,
+        brand: device.brand,
+        model: device.model,
+        serialNumber: device.serialNumber,
       },
       {
         headers: {
@@ -37,7 +37,7 @@ export const getUsersDevices = async () => {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
   try {
-    const response = await instance.get(`deviceList?username=${username}`, {
+    const response = await instance.get(`/list?username=${username}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,12 +47,12 @@ export const getUsersDevices = async () => {
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const deleteDevice = async (deviceId) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await instance.delete(`deleteDevice?deviceId=${deviceId}`, {
+    const response = await instance.delete(`/${deviceId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -62,7 +62,7 @@ export const deleteDevice = async (deviceId) => {
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const updateDevice = async (deviceId, device) => {
   try {
@@ -73,7 +73,7 @@ export const updateDevice = async (deviceId, device) => {
         DeviceType: device.type,
         Brand: device.brand,
         Model: device.model,
-        SerialNumber: device.serialNumber
+        SerialNumber: device.serialNumber,
       },
       {
         headers: {
@@ -86,4 +86,4 @@ export const updateDevice = async (deviceId, device) => {
   } catch (error) {
     throw error;
   }
-}
+};
