@@ -65,4 +65,14 @@ public class InvoiceService {
 
         return ResponseEntity.ok(invoice);
     }
+
+    public ResponseEntity<?> deletePreviousInvoices(int serviceRequestId) {
+        boolean deleteResult = invoiceRepository.deletePreviousInvoices(serviceRequestId);
+
+        if (!deleteResult)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "BackendErrors.ErrorDeletingInvoices"));
+
+        return ResponseEntity.ok("Invoices deleted successfully");
+    }
 }

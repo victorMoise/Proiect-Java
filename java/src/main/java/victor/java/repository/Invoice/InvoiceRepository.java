@@ -34,4 +34,21 @@ public class InvoiceRepository implements IInvoiceRepository {
 
         return true;
     }
+
+    @Override
+    public boolean deletePreviousInvoices(int serviceRequestId) {
+        String query = "DELETE FROM Invoices WHERE ServiceRequestId = ?";
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setInt(1, serviceRequestId);
+
+            statement.executeUpdate();
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to delete previous invoice", ex);
+        }
+
+        return true;
+    }
 }

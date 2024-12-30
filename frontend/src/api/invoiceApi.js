@@ -42,7 +42,7 @@ export const getUsersInvoices = async () => {
 export const deleteInvoicesOfServiceRequest = async (id) => {
   const token = localStorage.getItem("token");
   try {
-    await instance.delete(`invoices-device-serviceRequest?id=${id}`, {
+    await instance.delete(`/previous?serviceRequestId=${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
