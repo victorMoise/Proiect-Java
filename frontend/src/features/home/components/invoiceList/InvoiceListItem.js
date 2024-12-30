@@ -81,7 +81,7 @@ const InvoiceListItem = ({ invoice, index, onPay }) => {
         open={open}
         handleClose={handleClose}
         invoice={invoice}
-        onPay={() => onPay(invoice.id, invoice.invoiceId)}
+        onPay={() => onPay(invoice.serviceRequestId, invoice.invoiceId)}
         paymentStatus={invoice.paymentStatus}
       />
     </>

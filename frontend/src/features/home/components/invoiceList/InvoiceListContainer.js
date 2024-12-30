@@ -73,7 +73,7 @@ const InvoiceListContainer = () => {
                 <InvoiceListItem
                   invoice={invoice}
                   index={index}
-                  onPay={() => handlePay(invoice.id, invoice.invoiceId)}
+                  onPay={() => handlePay(invoice.serviceRequestId, invoice.invoiceId)}
                 />
               </Grid>
             ))}
