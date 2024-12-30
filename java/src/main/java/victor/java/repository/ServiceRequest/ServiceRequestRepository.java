@@ -46,13 +46,21 @@ public class ServiceRequestRepository implements IServiceRequestRepository {
             INNER JOIN Devices d ON sr.DeviceId = d.DeviceId
             INNER JOIN DictionaryStatus ds ON sr.StatusId = ds.StatusId
             INNER JOIN Users u ON d.ClientId = u.Id
-            WHERE u.Username = ? AND sr.StatusId != 6
         """;
+
+        boolean filterByUsername = username != null && !username.isBlank();
+
+        if (filterByUsername) {
+            query += " WHERE u.Username = ?";
+        }
 
         try {
             var connection = databaseManager.getConnection();
             var statement = connection.prepareStatement(query);
-            statement.setString(1, username);
+
+            if (filterByUsername) {
+                statement.setString(1, username);
+            }
 
             var resultSet = statement.executeQuery();
 
@@ -120,6 +128,24 @@ public class ServiceRequestRepository implements IServiceRequestRepository {
             return true;
         } catch (Exception ex) {
             throw new RuntimeException("Failed to delete service request", ex);
+        }
+    }
+
+    public boolean updateServiceRequestStatus(int serviceRequestId, int statusId) {
+        String query = "UPDATE ServiceRequests SET StatusId = ? WHERE ServiceRequestId = ?";
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setInt(1, statusId);
+            statement.setInt(2, serviceRequestId);
+
+            statement.executeUpdate();
+            connection.commit();
+
+            return true;
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to update service request status", ex);
         }
     }
 }

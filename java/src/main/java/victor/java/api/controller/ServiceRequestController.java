@@ -23,6 +23,11 @@ public class ServiceRequestController {
         return serviceRequestService.addServiceRequest(request);
     }
 
+    @PutMapping("/service-request/status")
+    public ResponseEntity<?> updateServiceRequestStatus(@RequestParam int serviceRequestId, @RequestParam int statusId) {
+        return serviceRequestService.updateServiceRequestStatus(serviceRequestId, statusId);
+    }
+
     @DeleteMapping("/service-request/{serviceRequestId}")
     public ResponseEntity<?> deleteServiceRequest(@PathVariable int serviceRequestId) {
         return serviceRequestService.deleteServiceRequest(serviceRequestId);

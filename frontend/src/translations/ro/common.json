@@ -98,7 +98,9 @@
     "WeakPassword": "Parola trebuie sa aiba cel putin 8 caractere",
     "InvalidEmail": "Adresa de email invalida",
     "InvalidCredentials": "Nume de utilizator sau parola invalide",
-    "DeviceHasServiceRequest": "Acest dispozitiv are cereri de service in asteptare si nu poate fi sters"
+    "DeviceHasServiceRequest": "Acest dispozitiv are cereri de service in asteptare si nu poate fi sters",
+    "NoServiceTypeSelected": "Va rugam sa selectati un tip de service",
+    "ServiceLogAddFailed": "Eroare la adaugarea inregistrarii de service"
   },
   "BackendMessages": {
     "UserRegistered": "Utilizator inregistrat cu succes"

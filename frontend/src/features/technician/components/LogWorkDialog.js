@@ -9,7 +9,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { getServiceTypes } from "../../../api/serviceRequestApi";
+import { getServiceTypes } from "../../../api/serviceLogApi";
 import { green, red } from "@mui/material/colors";
 
 const LogWorkDialog = ({
@@ -69,7 +69,7 @@ const LogWorkDialog = ({
           required
         >
           {serviceTypes.map((type) => (
-            <MenuItem key={type.serviceTypeId} value={type.serviceTypeId}>
+            <MenuItem key={type.id} value={type.id}>
               {type.name}
             </MenuItem>
           ))}

@@ -11,14 +11,11 @@ export const getUsersServiceRequests = async () => {
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");
   try {
-    const response = await instance.get(
-      `/list?username=${username}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await instance.get(`/list?username=${username}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
@@ -51,14 +48,11 @@ export const addServiceRequest = async (serviceRequest) => {
 export const deleteServiceRequest = async (serviceRequestId) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await instance.delete(
-      `/${serviceRequestId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await instance.delete(`/${serviceRequestId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
@@ -69,7 +63,7 @@ export const deleteServiceRequest = async (serviceRequestId) => {
 export const getAllServiceRequests = async () => {
   const token = localStorage.getItem("token");
   try {
-    const response = await instance.get("allServiceRequests", {
+    const response = await instance.get(`/list?username=${""}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -85,7 +79,7 @@ export const updateRequestStatus = async (serviceRequestId, statusId) => {
   const token = localStorage.getItem("token");
   try {
     const response = await instance.put(
-      `serviceRequestStatus?serviceRequestId=${serviceRequestId}&statusId=${statusId}`,
+      `status?serviceRequestId=${serviceRequestId}&statusId=${statusId}`,
       {},
       {
         headers: {
@@ -99,47 +93,6 @@ export const updateRequestStatus = async (serviceRequestId, statusId) => {
     throw error;
   }
 };
-
-export const getServiceTypes = async () => {
-  const token = localStorage.getItem("token");
-  try {
-    const response = await instance.get("serviceTypes", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const logWork = async (serviceRequestId, serviceTypeId, notes) => {
-  const token = localStorage.getItem("token");
-  const username = localStorage.getItem("username");
-  try {
-    const response = await instance.put(
-      `logWork`,
-      {
-        username,
-        serviceRequestId,
-        serviceTypeId,
-        notes,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
 
 export const getUsersWork = async () => {
   const token = localStorage.getItem("token");
@@ -158,7 +111,7 @@ export const getUsersWork = async () => {
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const deleteWork = async (serviceLogId) => {
   const token = localStorage.getItem("token");
@@ -176,4 +129,4 @@ export const deleteWork = async (serviceLogId) => {
   } catch (error) {
     throw error;
   }
-}
+};

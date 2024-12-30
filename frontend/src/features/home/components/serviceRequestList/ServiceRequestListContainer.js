@@ -48,13 +48,16 @@ const ServiceRequestListContainer = () => {
     }
   };
 
-  const handleDelete = async (serviceRequestId) => {
+  const handleDelete = async (id) => {
     try {
-      await deleteServiceRequest(serviceRequestId);
+      await deleteServiceRequest(id);
       showToast(t("Home.ServiceRequestList.DeletedSuccessfully"), "success");
       handleGetServiceRequestList();
     } catch (error) {
-      showToast(t("Home.ServiceRequestList.Error.ErrorDeletingRequest"), "error");
+      showToast(
+        t("Home.ServiceRequestList.Error.ErrorDeletingRequest"),
+        "error"
+      );
     }
   };
 
@@ -72,7 +75,7 @@ const ServiceRequestListContainer = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       handleGetServiceRequestList();
-    }, 10); 
+    }, 10);
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,7 +87,7 @@ const ServiceRequestListContainer = () => {
     </IconButton>,
     <IconButton key="refresh" onClick={handleGetServiceRequestList}>
       <RefreshIcon />
-    </IconButton>
+    </IconButton>,
   ];
 
   return (

@@ -100,7 +100,9 @@
     "WeakPassword": "Password must be at least 8 characters long",
     "InvalidEmail": "Invalid email address",
     "InvalidCredentials": "Invalid username or password",
-    "DeviceHasServiceRequest": "This device has active service requests and cannot be deleted"
+    "DeviceHasServiceRequest": "This device has active service requests and cannot be deleted",
+    "NoServiceTypeSelected": "Please select a service type",
+    "ServiceLogAddFailed": "Failed to add service log"
   },
   "BackendMessages": {
     "UserRegistered": "User registered successfully"

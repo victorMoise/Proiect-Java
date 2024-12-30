@@ -10,4 +10,5 @@ public interface IServiceRequestRepository {
     List<ServiceRequest> getServiceRequestList(String username);
     ServiceRequest addServiceRequest(ServiceRequestAddRequest request);
     boolean deleteServiceRequest(int serviceRequestId);
+    boolean updateServiceRequestStatus(int serviceRequestId, int statusId);
 }

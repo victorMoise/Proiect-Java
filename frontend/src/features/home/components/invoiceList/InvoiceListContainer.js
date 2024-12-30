@@ -1,6 +1,9 @@
 import { Card, CardContent, Grid, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { getUsersInvoices, updateInvoiceStatus } from "../../../../api/invoiceApi";
+import {
+  getUsersInvoices,
+  updateInvoiceStatus,
+} from "../../../../api/invoiceApi";
 import useToast from "../../../../hooks/useToast";
 import Toast from "../../../../components/Toast";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -11,7 +14,7 @@ import { updateRequestStatus } from "../../../../api/serviceRequestApi";
 const InvoiceListContainer = () => {
   const [invoices, setInvoices] = useState([]);
   const { toast, showToast, handleClose: handleCloseToast } = useToast();
-  const { t } = useTranslation("common"); 
+  const { t } = useTranslation("common");
 
   const handleGetInvoiceList = async () => {
     try {
@@ -20,14 +23,14 @@ const InvoiceListContainer = () => {
     } catch (error) {
       showToast(t("Home.InvoiceList.Error.FetchingError"), "error");
     }
-  }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
       handleGetInvoiceList();
     }, 10);
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -45,7 +48,7 @@ const InvoiceListContainer = () => {
   const cardActions = [
     <IconButton key="refresh" onClick={handleGetInvoiceList}>
       <RefreshIcon />
-    </IconButton>
+    </IconButton>,
   ];
 
   return (
@@ -70,7 +73,7 @@ const InvoiceListContainer = () => {
                 <InvoiceListItem
                   invoice={invoice}
                   index={index}
-                  onPay={() => handlePay(invoice.serviceRequestId, invoice.invoiceId)}
+                  onPay={() => handlePay(invoice.id, invoice.invoiceId)}
                 />
               </Grid>
             ))}

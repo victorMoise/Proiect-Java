@@ -63,7 +63,7 @@ const TechnicianPageRequestListItem = (props) => {
               variant="contained"
               color="primary"
               size="small"
-              onClick={() => onStartProgress(request.serviceRequestId)}
+              onClick={() => onStartProgress(request.id)}
               sx={{ ml: 1 }}
             >
               {t("Technician.Request.Button.Start")}
@@ -74,7 +74,7 @@ const TechnicianPageRequestListItem = (props) => {
               <Button
                 variant="contained"
                 size="small"
-                onClick={() => onLogWork(request.serviceRequestId)}
+                onClick={() => onLogWork(request.id)}
                 sx={{ ml: 1 }}
               >
                 {t("Technician.Request.Button.LogWork")}
@@ -83,7 +83,7 @@ const TechnicianPageRequestListItem = (props) => {
                 variant="contained"
                 color="primary"
                 size="small"
-                onClick={() => onComplete(request.serviceRequestId)}
+                onClick={() => onComplete(request.id)}
                 sx={{
                   ml: 1,
                   backgroundColor: green[500],
@@ -98,7 +98,7 @@ const TechnicianPageRequestListItem = (props) => {
               <Button
                 variant="contained"
                 size="small"
-                onClick={() => onStopProgress(request.serviceRequestId)}
+                onClick={() => onStopProgress(request.id)}
                 sx={{
                   ml: 1,
                   backgroundColor: red[500],
@@ -117,7 +117,7 @@ const TechnicianPageRequestListItem = (props) => {
               <Button
                 variant="contained"
                 size="small"
-                onClick={() => onStartProgress(request.serviceRequestId)}
+                onClick={() => onStartProgress(request.id)}
                 sx={{ ml: 1 }}
               >
                 {t("Technician.Request.Button.Reopen")}
@@ -133,7 +133,7 @@ const TechnicianPageRequestListItem = (props) => {
                     backgroundColor: green[700],
                   },
                 }}
-                onClick={() => onCreateInvoice(request.serviceRequestId)}
+                onClick={() => onCreateInvoice(request.id)}
               >
                 {t("Technician.Request.Button.Invoice")}
               </Button>
@@ -144,7 +144,7 @@ const TechnicianPageRequestListItem = (props) => {
               <Button
                 variant="contained"
                 size="small"
-                onClick={() => onRevokeInvoice(request.serviceRequestId)}
+                onClick={() => onRevokeInvoice(request.id)}
                 sx={{ ml: 1 }}
               >
                 {t("Technician.Request.Button.UnInvoice")}

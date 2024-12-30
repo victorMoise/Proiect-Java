@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   getAllServiceRequests,
-  logWork,
   updateRequestStatus,
 } from "../../../api/serviceRequestApi";
 import { useTranslation } from "react-i18next";
@@ -15,6 +14,7 @@ import {
   createInvoice,
   deleteInvoicesOfServiceRequest,
 } from "../../../api/invoiceApi";
+import { logWork } from "../../../api/serviceLogApi";
 
 const TechnicianPageRequestsList = () => {
   const [requests, setRequests] = useState([]);
@@ -22,7 +22,7 @@ const TechnicianPageRequestsList = () => {
   const [currentRequestId, setCurrentRequestId] = useState(null);
   const [currentDeviceName, setCurrentDeviceName] = useState("");
   const [currentSerialNumber, setCurrentSerialNumber] = useState("");
-  const [selectedServiceType, setSelectedServiceType] = useState("");
+  const [selectedServiceType, setSelectedServiceType] = useState(-1);
   const [notes, setNotes] = useState("");
   const { toast, showToast, handleClose } = useToast();
   const { t } = useTranslation("common");
@@ -76,7 +76,7 @@ const TechnicianPageRequestsList = () => {
     setCurrentRequestId(null);
     setCurrentDeviceName("");
     setCurrentSerialNumber("");
-    setSelectedServiceType("");
+    setSelectedServiceType(-1);
     setNotes("");
   };
 
@@ -140,7 +140,7 @@ const TechnicianPageRequestsList = () => {
                   onRevokeInvoice={handleRevokeInvoice}
                   onLogWork={() =>
                     handleLogWork(
-                      request.serviceRequestId,
+                      request.id,
                       request.device.brand + " " + request.device.model,
                       request.device.serialNumber
                     )

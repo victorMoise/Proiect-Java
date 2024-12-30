@@ -27,11 +27,13 @@ public class ServiceRequestService {
     }
 
     public ResponseEntity<?> getServiceRequestList(String username) {
-        User user = userRepository.getUser(username);
+        if (!String.valueOf(username).isBlank()) {
+            User user = userRepository.getUser(username);
 
-        if (user == null)
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(Collections.singletonMap("message", "User not found"));
+            if (user == null)
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(Collections.singletonMap("message", "User not found"));
+        }
 
         List<ServiceRequest> serviceRequests = serviceRequestRepository.getServiceRequestList(username);
         return ResponseEntity.ok(serviceRequests);
@@ -49,7 +51,22 @@ public class ServiceRequestService {
     }
 
     public ResponseEntity<?> deleteServiceRequest(int serviceRequestId) {
-        serviceRequestRepository.deleteServiceRequest(serviceRequestId);
+        boolean deleteResult = serviceRequestRepository.deleteServiceRequest(serviceRequestId);
+
+        if (!deleteResult)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "Service request not found"));
+
         return ResponseEntity.ok("Service request with id " +  serviceRequestId + " deleted successfully");
+    }
+
+    public ResponseEntity<?> updateServiceRequestStatus(int serviceRequestId, int statusId) {
+        boolean updateResult = serviceRequestRepository.updateServiceRequestStatus(serviceRequestId, statusId);
+
+        if (!updateResult)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "Service request not found"));
+
+        return ResponseEntity.ok("Service request with id " +  serviceRequestId + " updated successfully");
     }
 }

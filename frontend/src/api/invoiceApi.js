@@ -10,15 +10,11 @@ export const instance = axios.create({
 export const createInvoice = async (requestId) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await instance.post(
-      `invoice?serviceRequestId=${requestId}`,
-      null,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await instance.post(`invoice?id=${requestId}`, null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
@@ -43,17 +39,14 @@ export const getUsersInvoices = async () => {
   }
 };
 
-export const deleteInvoicesOfServiceRequest = async (serviceRequestId) => {
+export const deleteInvoicesOfServiceRequest = async (id) => {
   const token = localStorage.getItem("token");
   try {
-    await instance.delete(
-      `invoices-device-serviceRequest?serviceRequestId=${serviceRequestId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    await instance.delete(`invoices-device-serviceRequest?id=${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   } catch (error) {
     throw error;
   }
@@ -91,4 +84,4 @@ export const updateInvoiceStatus = async (invoiceId, status) => {
   } catch (error) {
     throw error;
   }
-}
+};
