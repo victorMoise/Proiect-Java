@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TableCard from "../../../components/TableCard";
 import { useTranslation } from "react-i18next";
-import { deleteWork, getUsersWork } from "../../../api/serviceRequestApi";
 import useToast from "../../../hooks/useToast";
 import Toast from "../../../components/Toast";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteWork, getUsersWork } from "../../../api/serviceLogApi";
 
 const WorkTableCard = () => {
   const { t } = useTranslation("common");
@@ -68,7 +68,7 @@ const WorkTableCard = () => {
         tableHeaders={tableHeaders}
         fetchAction={fetchWork}
         itemList={workList}
-        itemActions={(item) => itemActions(item.serviceLogId)}
+        itemActions={(item) => itemActions(item.id)}
       />
       <Toast toast={toast} handleClose={handleClose} />
     </>

@@ -11,4 +11,5 @@ public interface IServiceRequestRepository {
     ServiceRequest addServiceRequest(ServiceRequestAddRequest request);
     boolean deleteServiceRequest(int serviceRequestId);
     boolean updateServiceRequestStatus(int serviceRequestId, int statusId);
+    ServiceRequest getServiceRequest(int serviceRequestId);
 }

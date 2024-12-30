@@ -148,4 +148,48 @@ public class ServiceRequestRepository implements IServiceRequestRepository {
             throw new RuntimeException("Failed to update service request status", ex);
         }
     }
+
+    public ServiceRequest getServiceRequest(int serviceRequestId) {
+        String query = """
+            SELECT sr.ServiceRequestId, sr.StatusId, ds.StatusName, sr.IssueDescription, sr.RequestDate, 
+                   u.Username AS ClientName, d.DeviceId, d.Brand, d.Model, d.DeviceType, d.SerialNumber 
+            FROM ServiceRequests sr
+            INNER JOIN Devices d ON sr.DeviceId = d.DeviceId
+            INNER JOIN DictionaryStatus ds ON sr.StatusId = ds.StatusId
+            INNER JOIN Users u ON d.ClientId = u.Id
+            WHERE sr.ServiceRequestId = ?
+        """;
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setInt(1, serviceRequestId);
+
+            var resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                int id = resultSet.getInt("ServiceRequestId");
+                int statusId = resultSet.getInt("StatusId");
+                String statusName = resultSet.getString("StatusName");
+                String issueDescription = resultSet.getString("IssueDescription");
+                Date requestDate = resultSet.getDate("RequestDate");
+                String clientName = resultSet.getString("ClientName");
+
+                int deviceId = resultSet.getInt("DeviceId");
+                String brand = resultSet.getString("Brand");
+                String model = resultSet.getString("Model");
+                String deviceType = resultSet.getString("DeviceType");
+                String serialNumber = resultSet.getString("SerialNumber");
+
+                Device device = new Device(deviceId, brand, model, deviceType, serialNumber, clientName);
+                return new ServiceRequest(
+                        id, statusId, statusName, issueDescription, requestDate, clientName, device
+                );
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to fetch service request", ex);
+        }
+
+        return null;
+    }
 }

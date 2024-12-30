@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://localhost:7170/api/Invoices/";
+const API_BASE_URL = "http://localhost:8080/invoice";
 
 export const instance = axios.create({
   baseURL: API_BASE_URL,
@@ -10,7 +10,7 @@ export const instance = axios.create({
 export const createInvoice = async (requestId) => {
   const token = localStorage.getItem("token");
   try {
-    const response = await instance.post(`invoice?id=${requestId}`, null, {
+    const response = await instance.post(`/${requestId}`, null, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

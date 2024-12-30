@@ -100,7 +100,9 @@
     "InvalidCredentials": "Nume de utilizator sau parola invalide",
     "DeviceHasServiceRequest": "Acest dispozitiv are cereri de service in asteptare si nu poate fi sters",
     "NoServiceTypeSelected": "Va rugam sa selectati un tip de service",
-    "ServiceLogAddFailed": "Eroare la adaugarea inregistrarii de service"
+    "ServiceLogAddFailed": "Eroare la adaugarea inregistrarii de service",
+    "ServiceLogNotFound": "Inregistrarea de service nu a fost gasita",
+    "ErrorGeneratingInvoice": "Eroare la generarea facturii"
   },
   "BackendMessages": {
     "UserRegistered": "Utilizator inregistrat cu succes"

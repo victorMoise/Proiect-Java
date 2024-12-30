@@ -2,6 +2,7 @@ package victor.java.repository.ServiceLog;
 
 import org.springframework.stereotype.Repository;
 import victor.java.api.model.Device;
+import victor.java.api.model.ServiceLog;
 import victor.java.api.model.ServiceRequest;
 import victor.java.api.model.ServiceType;
 import victor.java.api.request.ServiceLogAddRequest;
@@ -68,5 +69,112 @@ public class ServiceLogRepository implements IServiceLogRepository {
         } catch (Exception ex) {
             throw new RuntimeException("Failed to add service log", ex);
         }
+    }
+
+    @Override
+    public List<ServiceLog> getServiceLogList(String username) {
+        List<ServiceLog> serviceLogs = new ArrayList<>();
+        String query = """
+            SELECT
+                sl.ServiceLogId,
+                d.Brand + ' ' + d.Model AS DeviceName,
+                st.Name as ServiceTypeName,
+                sl.ServiceDate,
+                sl.Notes,
+                u.Username as ClientUsername
+            FROM ServiceLogs sl
+            INNER JOIN ServiceRequests sr ON sl.ServiceRequestId = sr.ServiceRequestId
+            INNER JOIN Devices d ON sr.DeviceId = d.DeviceId
+            INNER JOIN Users u ON u.Id = d.ClientId
+            INNER JOIN DictionaryServiceType st ON sl.ServiceTypeId = st.ServiceTypeId
+            WHERE u.Username = ?
+            ORDER BY sl.ServiceDate DESC
+        """;
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+
+            var resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ServiceLogId");
+                String deviceName = resultSet.getString("DeviceName");
+                String serviceTypeName = resultSet.getString("ServiceTypeName");
+                Date serviceDate = resultSet.getDate("ServiceDate");
+                String notes = resultSet.getString("Notes");
+                String clientUsername = resultSet.getString("ClientUsername");
+
+                ServiceLog serviceLog = new ServiceLog(id, deviceName, clientUsername, serviceDate, notes, serviceTypeName);
+
+                serviceLogs.add(serviceLog);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to fetch service requests", ex);
+        }
+
+        return serviceLogs;
+    }
+
+    @Override
+    public boolean deleteServiceLog(int serviceLogId) {
+        String query = "DELETE FROM ServiceLogs WHERE ServiceLogId = ?";
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setInt(1, serviceLogId);
+
+            return statement.executeUpdate() > 0;
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to delete service log", ex);
+        }
+    }
+
+    @Override
+    public List<ServiceLog> getServiceLogList(int serviceRequestId) {
+        List<ServiceLog> serviceLogs = new ArrayList<>();
+        String query = """
+            SELECT
+                sl.ServiceLogId,
+                d.Brand + ' ' + d.Model AS DeviceName,
+                st.Name as ServiceTypeName,
+                sl.ServiceDate,
+                sl.Notes,
+                u.Username as ClientUsername
+            FROM ServiceLogs sl
+            INNER JOIN ServiceRequests sr ON sl.ServiceRequestId = sr.ServiceRequestId
+            INNER JOIN Devices d ON sr.DeviceId = d.DeviceId
+            INNER JOIN Users u ON u.Id = d.ClientId
+            INNER JOIN DictionaryServiceType st ON sl.ServiceTypeId = st.ServiceTypeId
+            WHERE sr.ServiceRequestId = ?
+            ORDER BY sl.ServiceDate DESC
+        """;
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setInt(1, serviceRequestId);
+
+            var resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("ServiceLogId");
+                String deviceName = resultSet.getString("DeviceName");
+                String serviceTypeName = resultSet.getString("ServiceTypeName");
+                Date serviceDate = resultSet.getDate("ServiceDate");
+                String notes = resultSet.getString("Notes");
+                String clientUsername = resultSet.getString("ClientUsername");
+
+                ServiceLog serviceLog = new ServiceLog(id, deviceName, clientUsername, serviceDate, notes, serviceTypeName);
+
+                serviceLogs.add(serviceLog);
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to fetch service requests", ex);
+        }
+
+        return serviceLogs;
     }
 }

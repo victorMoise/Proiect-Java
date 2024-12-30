@@ -27,4 +27,8 @@ public class ServiceType {
     public String getCode() {
         return code;
     }
+
+    public double getPrice() {
+        return price;
+    }
 }

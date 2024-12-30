@@ -1,12 +1,6 @@
 package victor.java.repository;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.mindrot.jbcrypt.BCrypt;
 
 public class DatabaseManager {
     private final Connection connection;
@@ -28,6 +22,7 @@ public class DatabaseManager {
     }
 
     // Method to close the database connection
+    // Not used, maybe in the future it might be useful
     public void closeConnection() {
         try {
             connection.close();

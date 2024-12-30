@@ -47,3 +47,39 @@ export const logWork = async (serviceRequestId, serviceTypeId, notes) => {
   }
 };
 
+export const getUsersWork = async () => {
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+  try {
+    const response = await instance.get(
+      `/list?username=${username}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteWork = async (serviceLogId) => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await instance.delete(
+      `/${serviceLogId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

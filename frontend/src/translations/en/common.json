@@ -102,7 +102,9 @@
     "InvalidCredentials": "Invalid username or password",
     "DeviceHasServiceRequest": "This device has active service requests and cannot be deleted",
     "NoServiceTypeSelected": "Please select a service type",
-    "ServiceLogAddFailed": "Failed to add service log"
+    "ServiceLogAddFailed": "Failed to add service log",
+    "ServiceLogNotFound": "Service log not found",
+    "ErrorGeneratingInvoice": "Error generating invoice"
   },
   "BackendMessages": {
     "UserRegistered": "User registered successfully"

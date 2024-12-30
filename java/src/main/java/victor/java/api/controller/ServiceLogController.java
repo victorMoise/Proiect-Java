@@ -1,10 +1,7 @@
 package victor.java.api.controller;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import victor.java.api.request.ServiceLogAddRequest;
 import victor.java.service.ServiceLogService;
 
@@ -21,8 +18,18 @@ public class ServiceLogController {
         return serviceLogService.getServiceTypes();
     }
 
+    @GetMapping("/service-log/list")
+    public ResponseEntity<?> getServiceLogList(@RequestParam String username) {
+        return serviceLogService.getServiceLogList(username);
+    }
+
     @PostMapping("/service-log")
     public ResponseEntity<?> addServiceLog(@RequestBody ServiceLogAddRequest request) {
         return serviceLogService.addServiceLog(request);
+    }
+
+    @DeleteMapping("/service-log/{serviceLogId}")
+    public ResponseEntity<?> deleteServiceLog(@PathVariable int serviceLogId) {
+        return serviceLogService.deleteServiceLog(serviceLogId);
     }
 }

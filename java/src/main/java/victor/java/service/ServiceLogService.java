@@ -3,10 +3,13 @@ package victor.java.service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import victor.java.api.model.ResponseMessage;
+import victor.java.api.model.ServiceLog;
 import victor.java.api.model.User;
 import victor.java.api.request.ServiceLogAddRequest;
 import victor.java.repository.ServiceLog.IServiceLogRepository;
 import victor.java.repository.User.IUserRepository;
+
+import java.util.List;
 
 @Service
 public class ServiceLogService {
@@ -43,5 +46,29 @@ public class ServiceLogService {
         }
 
         return ResponseEntity.ok("Service log added successfully");
+    }
+
+    public ResponseEntity<?> getServiceLogList(String username) {
+        if (!String.valueOf(username).isBlank()) {
+            User user = userRepository.getUser(username);
+
+            if (user == null)
+                return ResponseEntity.badRequest()
+                        .body(new ResponseMessage("BackendErrors.UserNotFound"));
+        }
+
+        List<ServiceLog> serviceLogs = serviceLogRepository.getServiceLogList(username);
+
+        return ResponseEntity.ok(serviceLogs);
+    }
+
+    public ResponseEntity<?> deleteServiceLog(int serviceLogId) {
+        boolean deleteResult = serviceLogRepository.deleteServiceLog(serviceLogId);
+
+        if (!deleteResult)
+            return ResponseEntity.badRequest()
+                    .body(new ResponseMessage("BackendErrors.ServiceLogNotFound"));
+
+        return ResponseEntity.ok("Service log with id " +  serviceLogId + " deleted successfully");
     }
 }
