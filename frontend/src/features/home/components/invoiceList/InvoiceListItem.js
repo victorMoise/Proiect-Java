@@ -72,7 +72,7 @@ const InvoiceListItem = ({ invoice, index, onPay }) => {
             <span style={{ fontWeight: "bold" }}>
               {t("ServiceRequest.PaymentAmount")}:
             </span>{" "}
-            {invoice.ammount}
+            {invoice.amount}
           </Typography>
         </CardContent>
       </Card>

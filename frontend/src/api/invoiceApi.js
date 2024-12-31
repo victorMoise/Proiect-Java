@@ -52,23 +52,6 @@ export const deleteInvoicesOfServiceRequest = async (id) => {
   }
 };
 
-export const invoiceServiceLogs = async (invoiceId) => {
-  const token = localStorage.getItem("token");
-  try {
-    const response = await instance.get(
-      `invoice-service-logs?invoiceId=${invoiceId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
 export const updateInvoiceStatus = async (invoiceId, status) => {
   const token = localStorage.getItem("token");
   try {
@@ -81,6 +64,20 @@ export const updateInvoiceStatus = async (invoiceId, status) => {
         },
       }
     );
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const invoiceServiceLogs = async (invoiceId) => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await instance.get(`/${invoiceId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
   } catch (error) {
     throw error;
   }

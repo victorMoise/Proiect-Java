@@ -7,22 +7,26 @@ import victor.java.api.model.*;
 import victor.java.repository.Invoice.InvoiceRepository;
 import victor.java.repository.ServiceLog.ServiceLogRepository;
 import victor.java.repository.ServiceRequest.ServiceRequestRepository;
+import victor.java.repository.User.UserRepository;
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class InvoiceService {
     private final InvoiceRepository invoiceRepository;
     private final ServiceRequestRepository serviceRequestRepository;
     private final ServiceLogRepository serviceLogRepository;
+    private final UserRepository userRepository;
 
-    public InvoiceService(InvoiceRepository invoiceRepository, ServiceRequestRepository serviceRequestRepository, ServiceLogRepository serviceLogRepository) {
+    public InvoiceService(InvoiceRepository invoiceRepository, ServiceRequestRepository serviceRequestRepository, ServiceLogRepository serviceLogRepository, UserRepository userRepository) {
         this.invoiceRepository = invoiceRepository;
         this.serviceRequestRepository = serviceRequestRepository;
         this.serviceLogRepository = serviceLogRepository;
+        this.userRepository = userRepository;
     }
 
     public ResponseEntity<?> generateInvoice(int serviceRequestId) {
@@ -74,5 +78,28 @@ public class InvoiceService {
                     .body(Collections.singletonMap("message", "BackendErrors.ErrorDeletingInvoices"));
 
         return ResponseEntity.ok("Invoices deleted successfully");
+    }
+
+    public ResponseEntity<?> getInvoices(String username) {
+        User user = userRepository.getUser(username);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("message", "BackendErrors.UserNotFound"));
+        }
+
+        List<Invoice> invoices = invoiceRepository.getInvoices(username);
+
+        return ResponseEntity.ok(invoices);
+    }
+
+    public ResponseEntity<?> getInvoice(int invoiceId) {
+        List<InvoiceDetails> invoiceDetailsList = invoiceRepository.getInvoiceDetails(invoiceId);
+
+        if (invoiceDetailsList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(invoiceDetailsList);
     }
 }

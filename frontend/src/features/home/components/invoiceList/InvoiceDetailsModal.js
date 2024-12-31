@@ -10,8 +10,8 @@ import {
   Paper,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { invoiceServiceLogs } from "../../../../api/invoiceApi";
 import { red, green } from "@mui/material/colors";
+import { invoiceServiceLogs } from "../../../../api/invoiceApi";
 
 const InvoiceDetailsModal = ({
   open,
@@ -80,7 +80,7 @@ const InvoiceDetailsModal = ({
                       <span style={{ fontWeight: "bold" }}>
                         {t("Invoices.ServiceLogs.Notes")}:
                       </span>{" "}
-                      {log.notes}
+                      {log.technicianNotes}
                     </Typography>
                   </Grid>
                   <Grid item xs={6}>
@@ -96,7 +96,7 @@ const InvoiceDetailsModal = ({
                       <span style={{ fontWeight: "bold" }}>
                         {t("Invoices.ServiceLogs.ServiceTypePrice")}:
                       </span>{" "}
-                      {log.price}
+                      {log.amount}
                     </Typography>
                   </Grid>
                 </Grid>

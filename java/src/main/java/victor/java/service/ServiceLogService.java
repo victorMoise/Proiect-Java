@@ -71,4 +71,14 @@ public class ServiceLogService {
 
         return ResponseEntity.ok("Service log with id " +  serviceLogId + " deleted successfully");
     }
+
+    public ResponseEntity<?> getServiceLogs(int serviceRequestId) {
+        List<ServiceLog> serviceLogs = serviceLogRepository.getServiceLogList(serviceRequestId);
+
+        if (serviceLogs == null)
+            return ResponseEntity.badRequest()
+                    .body(new ResponseMessage("BackendErrors.ServiceLogsNotFound"));
+
+        return ResponseEntity.ok(serviceLogs);
+    }
 }

@@ -5,21 +5,18 @@ import java.time.LocalDate;
 public class Invoice {
     private int invoiceId;
     private int serviceRequestId;
-    private LocalDate invoiceDate;
+    private int deviceId;
+    private String brand;
+    private String model;
+    private String serialNumber;
+    private String issueDescription;
+    private String status;
     private double amount;
+    private String paymentStatus;
     private int paymentStatusId;
+    private LocalDate invoiceDate;
 
-    public Invoice() {
-    }
-
-    public Invoice(int invoiceId, int serviceRequestId, LocalDate invoiceDate, double amount, int paymentStatusId) {
-        this.invoiceId = invoiceId;
-        this.serviceRequestId = serviceRequestId;
-        this.invoiceDate = invoiceDate;
-        this.amount = amount;
-        this.paymentStatusId = paymentStatusId;
-    }
-
+    // Getters and Setters
     public int getInvoiceId() {
         return invoiceId;
     }
@@ -36,12 +33,52 @@ public class Invoice {
         this.serviceRequestId = serviceRequestId;
     }
 
-    public LocalDate getInvoiceDate() {
-        return invoiceDate;
+    public int getDeviceId() {
+        return deviceId;
     }
 
-    public void setInvoiceDate(LocalDate invoiceDate) {
-        this.invoiceDate = invoiceDate;
+    public void setDeviceId(int deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public String getIssueDescription() {
+        return issueDescription;
+    }
+
+    public void setIssueDescription(String issueDescription) {
+        this.issueDescription = issueDescription;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public double getAmount() {
@@ -52,11 +89,27 @@ public class Invoice {
         this.amount = amount;
     }
 
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
     public int getPaymentStatusId() {
         return paymentStatusId;
     }
 
     public void setPaymentStatusId(int paymentStatusId) {
         this.paymentStatusId = paymentStatusId;
+    }
+
+    public LocalDate getInvoiceDate() {
+        return invoiceDate;
+    }
+
+    public void setInvoiceDate(LocalDate invoiceDate) {
+        this.invoiceDate = invoiceDate;
     }
 }

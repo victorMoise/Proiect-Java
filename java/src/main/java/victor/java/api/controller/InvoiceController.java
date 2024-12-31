@@ -12,6 +12,16 @@ public class InvoiceController {
         this.invoiceService = invoiceService;
     }
 
+    @GetMapping("/invoice/list")
+    public ResponseEntity<?> getInvoices(@RequestParam String username) {
+        return invoiceService.getInvoices(username);
+    }
+
+    @GetMapping("/invoice/{invoiceId}")
+    public ResponseEntity<?> getInvoice(@PathVariable int invoiceId) {
+        return invoiceService.getInvoice(invoiceId);
+    }
+
     @PostMapping("/invoice/{serviceRequestId}")
     public ResponseEntity<?> generateInvoice(@PathVariable int serviceRequestId) {
         return invoiceService.generateInvoice(serviceRequestId);
