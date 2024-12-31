@@ -59,7 +59,6 @@ const WorkTableCard = () => {
     </IconButton>,
   ];
 
-
   return (
     <>
       <TableCard

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import victor.java.api.model.ResponseMessage;
+import victor.java.api.model.Role;
 import victor.java.api.model.User;
 import victor.java.api.request.UserRegisterRequest;
 import victor.java.api.request.UserUpdateRequest;
@@ -146,5 +147,33 @@ public class UserService {
         }
 
         return ResponseEntity.ok(Collections.singletonMap("message", "User updated successfully"));
+    }
+
+    public ResponseEntity<?> getUserList() {
+        List<User> users = userRepository.getUsers();
+        return ResponseEntity.ok(users);
+    }
+
+    public ResponseEntity<?> getRoleList() {
+        List<Role> roles = userRepository.getRoles();
+        return ResponseEntity.ok(roles);
+    }
+
+    public ResponseEntity<?> updateRole(String username, int roleId) {
+        User user = userRepository.getUser(username);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Collections.singletonMap("message", "BackendErrors.UserNotFound"));
+        }
+
+        boolean updateResult = userRepository.updateRole(username, roleId);
+
+        if (!updateResult) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "Failed to update role"));
+        }
+
+        return ResponseEntity.ok(Collections.singletonMap("message", "Role updated successfully"));
     }
 }

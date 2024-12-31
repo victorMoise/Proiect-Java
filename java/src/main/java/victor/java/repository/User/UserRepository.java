@@ -1,6 +1,7 @@
 package victor.java.repository.User;
 
 import org.springframework.stereotype.Repository;
+import victor.java.api.model.Role;
 import victor.java.api.model.User;
 import victor.java.api.request.UserUpdateRequest;
 import victor.java.repository.DatabaseManager;
@@ -22,7 +23,7 @@ public class UserRepository implements IUserRepository {
 
     public List<User> getUsers() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT * FROM Users";
+        String query = "SELECT *, dr.Name FROM Users u INNER JOIN DictionaryRoles dr on u.RoleId = dr.RoleId";
 
         try {
             var statement = databaseManager.getConnection().createStatement();
@@ -38,8 +39,9 @@ public class UserRepository implements IUserRepository {
                 String lastName = resultSet.getString("lastName");
                 String phoneNumber = resultSet.getString("phoneNumber");
                 String address = resultSet.getString("address");
+                String role = resultSet.getString("Name");
 
-                users.add(new User(id, email, username, password, createdAt, firstName, lastName, phoneNumber, address));
+                users.add(new User(id, email, username, password, createdAt, firstName, lastName, phoneNumber, address, role));
             }
         } catch (Exception ex) {
             throw new RuntimeException("Failed to get users", ex);
@@ -101,11 +103,9 @@ public class UserRepository implements IUserRepository {
         PreparedStatement statement = null;
 
         try {
-            // Get the connection manually
             connection = databaseManager.getConnection();
             statement = connection.prepareStatement(query);
 
-            // Use a helper method to handle null values
             statement.setString(1, request.username());
             statement.setString(2, request.email());
             statement.setString(3, request.firstName());
@@ -116,34 +116,67 @@ public class UserRepository implements IUserRepository {
 
             int rowsUpdated = statement.executeUpdate();
 
-            // Ensure the transaction is committed if auto-commit is disabled
             if (!connection.getAutoCommit()) {
                 connection.commit();
             }
 
             return rowsUpdated > 0;
         } catch (Exception ex) {
-            // Log the exception (use a logging framework in real applications)
             System.err.println("Failed to update user: " + ex.getMessage());
             ex.printStackTrace();
 
-            // Rethrow the exception or handle it as needed
             throw new RuntimeException("Failed to update user", ex);
         } finally {
-            // Close only the statement, not the connection
             try {
                 if (statement != null) {
                     statement.close();
                 }
             } catch (Exception ex) {
-                // Log or handle closing exceptions
                 System.err.println("Failed to close statement: " + ex.getMessage());
             }
         }
     }
 
+    public List<Role> getRoles() {
+        List<Role> roles = new ArrayList<>();
+        String query = "SELECT * FROM DictionaryRoles";
 
-    private String nullToEmpty(String value) {
-        return value == null ? "" : value;
+        try {
+            var statement = databaseManager.getConnection().createStatement();
+            var resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("RoleId");
+                String name = resultSet.getString("Name");
+                String code = resultSet.getString("Code");
+
+                roles.add(new Role(id, name, code));
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to get roles", ex);
+        }
+
+        return roles;
+    }
+
+    public Role getRole(String roleName) {
+        return getRoles().stream()
+                .filter(r -> r.getName().equals(roleName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public boolean updateRole(String username, int roleId) {
+        String query = "UPDATE Users SET RoleId = ? WHERE Username = ?";
+
+        try {
+            var statement = databaseManager.getConnection().prepareStatement(query);
+            statement.setInt(1, roleId);
+            statement.setString(2, username);
+
+            return statement.executeUpdate() > 0;
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to update user role", ex);
+        }
     }
 }

@@ -61,6 +61,7 @@ const AdminPageContainer = () => {
     <PageContent pageTitle="Admin Page">
       <UserListCard username={username} showToast={showToast} />
       <DeviceListCard username={username} showToast={showToast} />
+      <Toast toast={toast} handleClose={handleClose} />
     </PageContent>
   );
 };

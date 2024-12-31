@@ -112,7 +112,9 @@
   "Admin": {
     "UserList": "User list",
     "DeviceList": "Device list",
-    "ErrorFetchingUsers": "Error fetching users"
+    "ErrorFetchingUsers": "Error fetching users",
+    "EditUser": "Edit user",
+    "UserRoleUpdated": "User role updated successfully"
   },
   "Device": {
     "Id": "Id",

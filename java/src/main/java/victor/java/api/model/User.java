@@ -6,17 +6,19 @@ import java.util.Date;
 
 public class User {
     private int id;
-    private String email;
     private String username;
-    @JsonIgnore
-    private String password;
     private String firstName;
     private String lastName;
+    private String email;
+    @JsonIgnore
+    private String password;
     private String phoneNumber;
     private String address;
+    @JsonIgnore
     private Date createdAt;
     @JsonIgnore
     private int roleId;
+    private String role;
 
     public String getFirstName() {
         return firstName;
@@ -69,7 +71,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String email, String username, String password, Date createdAt, String firstName, String lastName, String phoneNumber, String address) {
+    public User(int id, String email, String username, String password, Date createdAt, String firstName, String lastName, String phoneNumber, String address, String role) {
         this.id = id;
         this.email = email;
         this.username = username;
@@ -79,6 +81,7 @@ public class User {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.role = role;
     }
 
     public int getId() {
@@ -121,5 +124,13 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

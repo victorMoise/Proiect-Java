@@ -110,7 +110,9 @@
   "Admin": {
     "UserList": "Lista utilizatori",
     "DeviceList": "Lista dispozitive",
-    "ErrorFetchingUsers": "Eroare la preluarea utilizatorilor"
+    "ErrorFetchingUsers": "Eroare la preluarea utilizatorilor",
+    "EditUser": "Editeaza utilizator",
+    "UserRoleUpdated": "Rolul utilizatorului a fost actualizat cu succes"
   },
   "Device": {
     "Id": "Id",
