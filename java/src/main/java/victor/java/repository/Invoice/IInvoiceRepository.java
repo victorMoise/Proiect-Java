@@ -10,4 +10,5 @@ public interface IInvoiceRepository {
     boolean deletePreviousInvoices(int serviceRequestId);
     List<Invoice> getInvoices(String username);
     List<InvoiceDetails> getInvoiceDetails(int invoiceId);
+    boolean updateInvoiceStatus(int invoiceId, String paymentStatusId);
 }

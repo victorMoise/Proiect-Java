@@ -139,4 +139,22 @@ public class InvoiceRepository implements IInvoiceRepository {
             throw new RuntimeException("Failed to get invoice details", ex);
         }
     }
+
+    @Override
+    public boolean updateInvoiceStatus(int invoiceId, String paymentStatusId) {
+        String query = "UPDATE Invoices SET PaymentStatusID = ? WHERE InvoiceID = ?";
+
+        try {
+            var connection = databaseManager.getConnection();
+            var statement = connection.prepareStatement(query);
+            statement.setString(1, paymentStatusId);
+            statement.setInt(2, invoiceId);
+
+            statement.executeUpdate();
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to update invoice status", ex);
+        }
+
+        return true;
+    }
 }

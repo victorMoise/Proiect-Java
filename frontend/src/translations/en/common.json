@@ -149,7 +149,10 @@
     "Actions": "Actions",
     "Close": "Close",
     "Pay": "Pay",
-    "Paid": "Paid"
+    "Paid": "Paid",
+    "Delete": "Delete",
+    "ConfirmDelete": "Confirm delete",
+    "ConfirmDeleteMessage": "Are you sure you want to delete this item?"
   },
   "Technician": {
     "Request": {
@@ -158,7 +161,7 @@
       "LogWork": "Log work",
       "LogWorkSuccess": "Work logged successfully",
       "MyWork": "My work history",
-      "DeleteWorkSuccess": "Worklog deleted successfully",
+      "DeleteWorkSuccess": "Work log deleted successfully",
       "CreateInvoiceSuccess": "Invoice created successfully",
       "RevokeInvoiceSuccess": "Invoice revoked successfully",
       "Notes": "Notes",
@@ -187,6 +190,9 @@
     "ClientName": "Client name"
   },
   "Invoices": {
+    "Success": {
+      "PaymentSuccess": "Payment successful"
+    },
     "Error": {
       "NoWorkDone": "No work has been done on this service request",
       "PaymentError": "Error processing payment"

@@ -7,7 +7,7 @@ import {
   Button,
   Typography,
   Grid,
-  Paper,
+  Card,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { red, green } from "@mui/material/colors";
@@ -46,7 +46,14 @@ const InvoiceDetailsModal = ({
         <Grid container spacing={2}>
           {serviceLogs.map((log, index) => (
             <Grid item xs={12} key={index}>
-              <Paper elevation={3} sx={{ padding: 2 }}>
+              <Card
+                sx={{
+                  padding: 2,
+                  boxShadow: 3,
+                  borderRadius: 2,
+                  marginBottom: 2,
+                }}
+              >
                 <Typography variant="h6" gutterBottom>
                   {t("Invoices.ServiceLogs.ServiceLog")} {index + 1}
                 </Typography>
@@ -100,7 +107,7 @@ const InvoiceDetailsModal = ({
                     </Typography>
                   </Grid>
                 </Grid>
-              </Paper>
+              </Card>
             </Grid>
           ))}
         </Grid>

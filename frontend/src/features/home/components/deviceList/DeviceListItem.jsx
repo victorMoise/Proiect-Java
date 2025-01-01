@@ -1,21 +1,45 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Card, CardContent, Typography, IconButton, Grid } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import React, { useState } from "react";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  IconButton,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
+} from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useTranslation } from "react-i18next";
+import { red, green } from "@mui/material/colors";
 
-const DeviceListItem = ({ device, index, onDelete, onEdit }) => {
+const DeviceListItem = ({ device, onEdit, onDelete }) => {
   const { t } = useTranslation("common");
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleDelete = () => {
+    onDelete(device.id);
+    handleClose();
+  };
 
   return (
-    <Card
-      key={index}
-      sx={{ boxShadow: 3, borderRadius: 2, position: "relative" }}
-    >
+    <Card sx={{ padding: 2, boxShadow: 3, borderRadius: 2, marginBottom: 2 }}>
       <CardContent>
-        <Grid container alignItems="center" justifyContent="space-between">
-          <Grid item xs>
-            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+        <Grid container justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h6">
               {device.brand} {device.model}
             </Typography>
           </Grid>
@@ -30,7 +54,7 @@ const DeviceListItem = ({ device, index, onDelete, onEdit }) => {
             <IconButton
               aria-label="delete"
               sx={{ color: "red" }}
-              onClick={() => onDelete(device.id)}
+              onClick={handleClickOpen}
             >
               <DeleteIcon />
             </IconButton>
@@ -47,6 +71,52 @@ const DeviceListItem = ({ device, index, onDelete, onEdit }) => {
           {device.serialNumber}
         </Typography>
       </CardContent>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {t("Common.ConfirmDelete")}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {t("Common.ConfirmDeleteMessage")}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleClose}
+            variant="contained"
+            size="small"
+            sx={{
+              backgroundColor: red[500],
+              color: "white",
+              "&:hover": {
+                backgroundColor: red[700],
+              },
+            }}
+          >
+            {t("Common.Cancel")}
+          </Button>
+          <Button
+            onClick={handleDelete}
+            variant="contained"
+            size="small"
+            sx={{
+              backgroundColor: green[500],
+              color: "white",
+              "&:hover": {
+                backgroundColor: green[700],
+              },
+            }}
+            autoFocus
+          >
+            {t("Common.Delete")}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Card>
   );
 };

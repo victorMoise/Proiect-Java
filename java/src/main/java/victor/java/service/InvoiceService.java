@@ -102,4 +102,14 @@ public class InvoiceService {
 
         return ResponseEntity.ok(invoiceDetailsList);
     }
+
+    public ResponseEntity<?> updateInvoiceStatus(int invoiceId, String paymentStatusId) {
+        boolean updateResult = invoiceRepository.updateInvoiceStatus(invoiceId, paymentStatusId);
+
+        if (!updateResult)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "BackendErrors.ErrorUpdatingInvoiceStatus"));
+
+        return ResponseEntity.ok("Invoice status updated successfully");
+    }
 }

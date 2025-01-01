@@ -147,7 +147,10 @@
     "Actions": "Actiuni",
     "Close": "Inchide",
     "Pay": "Plateste",
-    "Paid": "Platit"
+    "Paid": "Platit",
+    "Delete": "Sterge",
+    "ConfirmDelete": "Confirmati stergerea",
+    "ConfirmDeleteMessage": "Sunteti sigur ca doriti sa stergeti aceasta inregistrare?"
   },
   "Technician": {
     "Request": {
@@ -185,6 +188,9 @@
     "ClientName": "Nume client"
   },
   "Invoices": {
+    "Success": {
+      "PaymentSuccess": "Plata efectuata cu succes"
+    },
     "Error": {
       "InvoiceNotFound": "Factura nu a fost gasita",
       "NoWorkDone": "Nu s-a efectuat nicio munca pentru aceasta cerere de service"

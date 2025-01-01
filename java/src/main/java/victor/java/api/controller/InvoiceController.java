@@ -31,4 +31,9 @@ public class InvoiceController {
     public ResponseEntity<?> deletePreviousInvoices(@RequestParam int serviceRequestId) {
         return invoiceService.deletePreviousInvoices(serviceRequestId);
     }
+
+    @PutMapping("/invoice/status")
+    public ResponseEntity<?> updateInvoiceStatus(@RequestParam int invoiceId, @RequestParam String paymentStatusId) {
+        return invoiceService.updateInvoiceStatus(invoiceId, paymentStatusId);
+    }
 }

@@ -56,7 +56,7 @@ export const updateInvoiceStatus = async (invoiceId, status) => {
   const token = localStorage.getItem("token");
   try {
     await instance.put(
-      `update-invoice-status?invoiceId=${invoiceId}&paymentStatusId=${status}`,
+      `/status?invoiceId=${invoiceId}&paymentStatusId=${status}`,
       null,
       {
         headers: {

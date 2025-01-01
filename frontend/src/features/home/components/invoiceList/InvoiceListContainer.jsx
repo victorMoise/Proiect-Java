@@ -38,7 +38,7 @@ const InvoiceListContainer = () => {
     try {
       await updateRequestStatus(requestId, 6);
       await updateInvoiceStatus(invoiceId, 2);
-      showToast(t("Home.InvoiceList.Success.PaymentSuccess"), "success");
+      showToast(t("Invoices.Success.PaymentSuccess"), "success");
       handleGetInvoiceList();
     } catch (error) {
       showToast(t("Invoices.Error.PaymentError"), "error");
