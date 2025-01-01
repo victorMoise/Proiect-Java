@@ -114,7 +114,17 @@
     "DeviceList": "Device list",
     "ErrorFetchingUsers": "Error fetching users",
     "EditUser": "Edit user",
-    "UserRoleUpdated": "User role updated successfully"
+    "UserRoleUpdated": "User role updated successfully",
+    "Statistics": {
+      "AboveAverageTechnicians": "Above average employees",
+      "Username": "Username",
+      "Position": "Place",
+      "ServicesLogged": "Services logged",
+      "AverageServicesLogged": "Average",
+      "Error": {
+        "FetchingError": "Error fetching technician statistics"
+      }
+    }
   },
   "Device": {
     "Id": "Id",
@@ -152,7 +162,8 @@
     "Paid": "Paid",
     "Delete": "Delete",
     "ConfirmDelete": "Confirm delete",
-    "ConfirmDeleteMessage": "Are you sure you want to delete this item?"
+    "ConfirmDeleteMessage": "Are you sure you want to delete this item?",
+    "NoPermission": "You do not have permission to access this page"
   },
   "Technician": {
     "Request": {

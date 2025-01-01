@@ -68,3 +68,20 @@ export const updateUserRole = async (username, roleId) => {
     throw error;
   }
 };
+
+export const getAboveAverageTechnicians = async () => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await instance.get(
+      "/statistics/above-average-technicians",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

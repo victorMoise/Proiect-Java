@@ -7,6 +7,7 @@ import { LinearProgress, Typography } from "@mui/material";
 import UserListCard from "./UserListCard";
 import Toast from "../../../components/Toast";
 import useToast from "../../../hooks/useToast";
+import StatisticsContainer from "./StatisticsContainer";
 
 const AdminPageContainer = () => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -59,6 +60,7 @@ const AdminPageContainer = () => {
   return (
     <PageContent pageTitle="Admin">
       <UserListCard username={username} showToast={showToast} />
+      <StatisticsContainer showToast={showToast}/>
       <Toast toast={toast} handleClose={handleClose} />
     </PageContent>
   );

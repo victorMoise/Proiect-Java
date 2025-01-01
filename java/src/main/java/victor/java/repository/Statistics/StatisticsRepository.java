@@ -1,6 +1,7 @@
 package victor.java.repository.Statistics;
 
 import org.springframework.stereotype.Repository;
+import victor.java.api.model.TechnicianRankingItem;
 import victor.java.repository.DatabaseManager;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class StatisticsRepository implements IStatisticsRepository {
             SELECT
                 u.Username, 
                 COUNT(*) AS NumberOfServices,
-                (SELECT AverageServices FROM AvgServices) AS AverageRepairs
+                (SELECT AverageServices FROM AvgServices) AS AverageServices
             FROM Users u
             INNER JOIN ServiceLogs sl ON u.Id = sl.TechnicianID
             GROUP BY u.Username
@@ -42,12 +43,16 @@ public class StatisticsRepository implements IStatisticsRepository {
             var resultSet = statement.executeQuery();
 
             List<Object> aboveAverageTechnicians = new ArrayList<>();
+            int place = 0;
+
             while (resultSet.next()) {
-                aboveAverageTechnicians.add(Map.of(
-                    "username", resultSet.getString("Username"),
-                    "numberOfServices", resultSet.getInt("NumberOfServices"),
-                    "averageRepairs", resultSet.getInt("AverageRepairs")
-                ));
+                int numberOfServices = resultSet.getInt("NumberOfServices");
+                int averageServices = resultSet.getInt("AverageServices");
+                String username = resultSet.getString("Username");
+
+                TechnicianRankingItem technicianRankingItem = new TechnicianRankingItem(++place, username, numberOfServices, averageServices);
+
+                aboveAverageTechnicians.add(technicianRankingItem);
             }
 
             return aboveAverageTechnicians;

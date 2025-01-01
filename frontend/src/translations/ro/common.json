@@ -112,7 +112,17 @@
     "DeviceList": "Lista dispozitive",
     "ErrorFetchingUsers": "Eroare la preluarea utilizatorilor",
     "EditUser": "Editeaza utilizator",
-    "UserRoleUpdated": "Rolul utilizatorului a fost actualizat cu succes"
+    "UserRoleUpdated": "Rolul utilizatorului a fost actualizat cu succes",
+    "Statistics": {
+      "AboveAverageTechnicians": "Angajati peste medie",
+      "Username": "Utilizator",
+      "Position": "Pozitie",
+      "ServicesLogged": "Servicii inregistrate",
+      "AverageServicesLogged": "Medie",
+      "Error": {
+        "FetchingError": "Eroare la preluarea statisticilor despre angajati"
+      }
+    }
   },
   "Device": {
     "Id": "Id",
@@ -150,7 +160,8 @@
     "Paid": "Platit",
     "Delete": "Sterge",
     "ConfirmDelete": "Confirmati stergerea",
-    "ConfirmDeleteMessage": "Sunteti sigur ca doriti sa stergeti aceasta inregistrare?"
+    "ConfirmDeleteMessage": "Sunteti sigur ca doriti sa stergeti aceasta inregistrare?",
+    "NoPermission": "Nu aveti permisiunea de a accesa aceasta pagina"
   },
   "Technician": {
     "Request": {

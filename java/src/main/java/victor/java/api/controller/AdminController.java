@@ -23,10 +23,10 @@ public class AdminController {
         return userService.getUserList();
     }
 
-//    @GetMapping("/admin/statistics/top-technicians")
-//    public ResponseEntity<?> getAboveAverageTechnicians() {
-//        return userService.getAboveAverageTechnicians();
-//    }
+    @GetMapping("/admin/statistics/above-average-technicians")
+    public ResponseEntity<?> getAboveAverageTechnicians() {
+        return statisticsService.getAboveAverageTechnicians();
+    }
 
     @GetMapping("/admin/user/role")
     public ResponseEntity<?> getRoleList() {
