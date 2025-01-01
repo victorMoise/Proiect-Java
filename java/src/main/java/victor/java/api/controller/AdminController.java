@@ -28,6 +28,11 @@ public class AdminController {
         return statisticsService.getAboveAverageTechnicians();
     }
 
+    @GetMapping("admin/statistics/above-average-clients")
+    public ResponseEntity<?> getAboveAverageClients() {
+        return statisticsService.getAboveAverageClients();
+    }
+
     @GetMapping("/admin/user/role")
     public ResponseEntity<?> getRoleList() {
         return userService.getRoleList();

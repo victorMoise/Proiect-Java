@@ -121,8 +121,12 @@
       "Position": "Place",
       "ServicesLogged": "Services logged",
       "AverageServicesLogged": "Average",
+      "AboveAverageClients": "Above average clients",
+      "OrdersPlaced": "Orders placed",
+      "AverageOrdersPlaced": "Average",
       "Error": {
-        "FetchingError": "Error fetching technician statistics"
+        "TechnicianFetchingError": "Error fetching technician statistics",
+        "ClientsFetchingError": "Error fetching client statistics"
       }
     }
   },

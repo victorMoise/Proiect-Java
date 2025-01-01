@@ -23,7 +23,7 @@ const TableCard = ({
   itemList,
   itemActions,
 }) => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const { t } = useTranslation("common");
 
   const handleToggleExpand = () => {

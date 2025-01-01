@@ -85,3 +85,20 @@ export const getAboveAverageTechnicians = async () => {
     throw error;
   }
 };
+
+export const getAboveAverageClients = async () => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await instance.get(
+      "/statistics/above-average-clients",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch(error) {
+    throw error;
+  }
+}

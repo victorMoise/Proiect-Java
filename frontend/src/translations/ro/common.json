@@ -120,7 +120,7 @@
       "ServicesLogged": "Servicii inregistrate",
       "AverageServicesLogged": "Medie",
       "Error": {
-        "FetchingError": "Eroare la preluarea statisticilor despre angajati"
+        "TechnicianFetchingError": "Eroare la preluarea statisticilor despre angajati"
       }
     }
   },
