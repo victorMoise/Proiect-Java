@@ -85,7 +85,7 @@ public class ServiceLogRepository implements IServiceLogRepository {
             FROM ServiceLogs sl
             INNER JOIN ServiceRequests sr ON sl.ServiceRequestId = sr.ServiceRequestId
             INNER JOIN Devices d ON sr.DeviceId = d.DeviceId
-            INNER JOIN Users u ON u.Id = d.ClientId
+            INNER JOIN Users u ON u.Id = sl.TechnicianID
             INNER JOIN DictionaryServiceType st ON sl.ServiceTypeId = st.ServiceTypeId
             WHERE u.Username = ?
             ORDER BY sl.ServiceDate DESC

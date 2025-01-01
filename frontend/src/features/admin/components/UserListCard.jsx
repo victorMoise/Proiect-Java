@@ -23,9 +23,6 @@ const UserListCard = (props) => {
   const fetchUsers = async () => {
     try {
       const users = await getUserList(username);
-      users.forEach(element => {
-        delete element.id;
-      });
 
       setUserList(users);
     } catch (error) {
@@ -68,6 +65,7 @@ const UserListCard = (props) => {
   ];
 
   const tableHeaders = [
+    t("User.Id"),
     t("User.Username"),
     t("User.FirstName"),
     t("User.LastName"),
