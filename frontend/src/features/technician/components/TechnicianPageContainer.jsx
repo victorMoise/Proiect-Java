@@ -18,7 +18,7 @@ const TechnicianPageContainer = () => {
   const { toast, handleClose } = useToast();
 
   useEffect(() => {
-    const checkAdminStatus = async () => {
+    const checkTechnicianStatus = async () => {
       try {
         const result = await getUserRole(username);
         setIsTechnician(result.roleDescription === UserRoles.ADMIN || result.roleDescription === UserRoles.TECHNICIAN);
@@ -30,7 +30,7 @@ const TechnicianPageContainer = () => {
     };
 
     if (username) {
-      checkAdminStatus();
+      checkTechnicianStatus();
     } else {
       setLoading(false);
     }
