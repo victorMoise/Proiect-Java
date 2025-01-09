@@ -124,9 +124,16 @@
       "AboveAverageClients": "Above average clients",
       "OrdersPlaced": "Orders placed",
       "AverageOrdersPlaced": "Average",
+      "TotalPaidByUsers": "Total paid by users",
+      "Paid": "Paid",
+      "ServiceType": "Service type",
+      "Date": "Date",
+      "LastTechnicianServiceLog": "Last technician service log date",
       "Error": {
         "TechnicianFetchingError": "Error fetching technician statistics",
-        "ClientsFetchingError": "Error fetching client statistics"
+        "ClientsFetchingError": "Error fetching client statistics",
+        "TotalPaidByUsersFetchingError": "Error fetching total paid by users",
+        "LastServiceDatesFetchingError": "Error fetching last service dates"
       }
     }
   },

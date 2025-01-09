@@ -1,9 +1,7 @@
 package victor.java.repository.ServiceLog;
 
 import org.springframework.stereotype.Repository;
-import victor.java.api.model.Device;
 import victor.java.api.model.ServiceLog;
-import victor.java.api.model.ServiceRequest;
 import victor.java.api.model.ServiceType;
 import victor.java.api.request.ServiceLogAddRequest;
 import victor.java.repository.DatabaseManager;

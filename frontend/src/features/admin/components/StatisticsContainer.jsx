@@ -2,6 +2,8 @@ import React from "react";
 import { Grid } from "@mui/material";
 import AboveAverageTechniciansCard from "./AboveAverageTechniciansCard";
 import AboveAverageUsersCard from "./AboveAverageUsersCard";
+import TotalPaidByUsersCard from "./TotalPaidByUsersCard";
+import LastTechnicianServiceLogCard from "./LastTechnicianServiceLogCard";
 
 
 const StatisticsContainer = (props) => {
@@ -12,6 +14,12 @@ const StatisticsContainer = (props) => {
       </Grid>
       <Grid item xs={12} lg={6}>
         <AboveAverageUsersCard showToast={props.showToast} />
+      </Grid>
+      <Grid item xs={12} lg={6}>
+        <TotalPaidByUsersCard showToast={props.showToast} />
+      </Grid>
+      <Grid item xs={12} lg={6}>
+        <LastTechnicianServiceLogCard showToast={props.showToast} />
       </Grid>
     </Grid>
   );

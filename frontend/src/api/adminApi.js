@@ -89,8 +89,36 @@ export const getAboveAverageTechnicians = async () => {
 export const getAboveAverageClients = async () => {
   const token = localStorage.getItem("token");
   try {
+    const response = await instance.get("/statistics/above-average-clients", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getTotalPaidByUsers = async () => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await instance.get("/statistics/total-paid-by-users", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getLastTechnicianServiceDate = async () => {
+  const token = localStorage.getItem("token");
+  try {
     const response = await instance.get(
-      "/statistics/above-average-clients",
+      "/statistics/last-technician-service-log",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -98,7 +126,7 @@ export const getAboveAverageClients = async () => {
       }
     );
     return response.data;
-  } catch(error) {
+  } catch (error) {
     throw error;
   }
-}
+};

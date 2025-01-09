@@ -3,14 +3,20 @@ package victor.java.api.model;
 public class RankingItem {
     private int place;
     private String username;
-    private int count;
+    private double count;
     private double averageCount;
 
-    public RankingItem(int place, String username, int count, double averageCount) {
+    public RankingItem(int place, String username, double count, double averageCount) {
         this.place = place;
         this.username = username;
         this.count = count;
         this.averageCount = averageCount;
+    }
+
+    public RankingItem(int place, String username, double count) {
+        this.place = place;
+        this.username = username;
+        this.count = count;
     }
 
     public int getPlace() {
@@ -21,7 +27,7 @@ public class RankingItem {
         return username;
     }
 
-    public int getCount() {
+    public double getCount() {
         return count;
     }
 

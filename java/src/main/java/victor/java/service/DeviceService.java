@@ -41,6 +41,10 @@ public class DeviceService {
     public ResponseEntity<?> addDevice(DeviceAddRequest request) {
         User user = userRepository.getUser(request.clientName());
 
+        if (request.model() == null || request.brand() == null || request.deviceType() == null || request.serialNumber() == null)
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(Collections.singletonMap("message", "All fields are required"));
+
         if (user == null)
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(Collections.singletonMap("message", "User not found"));

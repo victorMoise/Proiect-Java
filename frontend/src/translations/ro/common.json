@@ -119,8 +119,19 @@
       "Position": "Pozitie",
       "ServicesLogged": "Servicii inregistrate",
       "AverageServicesLogged": "Medie",
+      "AboveAverageClients": "Clienti peste medie",
+      "OrdersPlaced": "Comenzi plasate",
+      "AverageOrdersPlaced": "Medie",
+      "TotalPaidByUsers": "Total platit de utilizatori",
+      "Paid": "Platit",
+      "ServiceType": "Tip serviciu",
+      "Date": "Data",
+      "LastTechnicianServiceLog": "Ultima data de service a tehnicianului",
       "Error": {
-        "TechnicianFetchingError": "Eroare la preluarea statisticilor despre angajati"
+        "TechnicianFetchingError": "Eroare la preluarea statisticilor despre angajati",
+        "ClientsFetchingError": "Eroare la preluarea statisticilor despre clienti",
+        "TotalPaidByUsersFetchingError": "Eroare la preluarea totalului platit de utilizatori",
+        "LastServiceDatesFetchingError": "Eroare la preluarea ultimelor date de service"
       }
     }
   },

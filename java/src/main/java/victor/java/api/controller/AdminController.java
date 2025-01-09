@@ -33,6 +33,16 @@ public class AdminController {
         return statisticsService.getAboveAverageClients();
     }
 
+    @GetMapping("admin/statistics/total-paid-by-users")
+    public ResponseEntity<?> getTotalPaidByUsers() {
+        return statisticsService.getTotalPaidByUsers();
+    }
+
+    @GetMapping("admin/statistics/last-technician-service-log")
+    public ResponseEntity<?> getLastTechnicianLog() {
+        return statisticsService.getLastTechnicianLog();
+    }
+
     @GetMapping("/admin/user/role")
     public ResponseEntity<?> getRoleList() {
         return userService.getRoleList();
