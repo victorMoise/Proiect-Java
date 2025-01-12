@@ -104,7 +104,9 @@
     "NoServiceTypeSelected": "Please select a service type",
     "ServiceLogAddFailed": "Failed to add service log",
     "ServiceLogNotFound": "Service log not found",
-    "ErrorGeneratingInvoice": "Error generating invoice"
+    "ErrorGeneratingInvoice": "Error generating invoice",
+    "NoServiceLogsFound": "No service logs found for this service request",
+    "ServiceLogsFound": "This service request has service logs"
   },
   "BackendMessages": {
     "UserRegistered": "User registered successfully"
@@ -119,7 +121,7 @@
       "AboveAverageTechnicians": "Above average employees",
       "Username": "Username",
       "Position": "Place",
-      "ServicesLogged": "Services logged",
+      "ServicesLogged": "Repairs logged",
       "AverageServicesLogged": "Average",
       "AboveAverageClients": "Above average clients",
       "OrdersPlaced": "Orders placed",

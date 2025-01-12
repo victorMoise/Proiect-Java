@@ -38,7 +38,8 @@ public class InvoiceService {
         List<ServiceLog> serviceLogs = serviceLogRepository.getServiceLogList(serviceRequestId);
 
         if (serviceLogs.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "BackendErrors.NoServiceLogsFound"));
         }
 
         List<ServiceType> serviceTypes = serviceLogRepository.getServiceTypeList();

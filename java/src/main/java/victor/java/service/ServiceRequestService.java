@@ -4,10 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import victor.java.api.model.Device;
+import victor.java.api.model.ServiceLog;
 import victor.java.api.model.ServiceRequest;
 import victor.java.api.model.User;
 import victor.java.api.request.ServiceRequestAddRequest;
 import victor.java.repository.Device.IDeviceRepository;
+import victor.java.repository.ServiceLog.ServiceLogRepository;
 import victor.java.repository.ServiceRequest.IServiceRequestRepository;
 import victor.java.repository.User.IUserRepository;
 
@@ -19,11 +21,13 @@ public class ServiceRequestService {
     private final IServiceRequestRepository serviceRequestRepository;
     private final IUserRepository userRepository;
     private final IDeviceRepository deviceRepository;
+    private final ServiceLogRepository serviceLogRepository;
 
-    public ServiceRequestService(IServiceRequestRepository serviceRequestRepository, IUserRepository userRepository, IDeviceRepository deviceRepository) {
+    public ServiceRequestService(IServiceRequestRepository serviceRequestRepository, IUserRepository userRepository, IDeviceRepository deviceRepository, ServiceLogRepository serviceLogRepository) {
         this.serviceRequestRepository = serviceRequestRepository;
         this.userRepository = userRepository;
         this.deviceRepository = deviceRepository;
+        this.serviceLogRepository = serviceLogRepository;
     }
 
     public ResponseEntity<?> getServiceRequestList(String username) {
@@ -51,6 +55,12 @@ public class ServiceRequestService {
     }
 
     public ResponseEntity<?> deleteServiceRequest(int serviceRequestId) {
+        List<ServiceLog> serviceLogs = serviceLogRepository.getServiceLogList(serviceRequestId);
+
+        if (!serviceLogs.isEmpty())
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("message", "BackendErrors.ServiceLogsFound"));
+
         boolean deleteResult = serviceRequestRepository.deleteServiceRequest(serviceRequestId);
 
         if (!deleteResult)

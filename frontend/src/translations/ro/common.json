@@ -102,7 +102,9 @@
     "NoServiceTypeSelected": "Va rugam sa selectati un tip de service",
     "ServiceLogAddFailed": "Eroare la adaugarea inregistrarii de service",
     "ServiceLogNotFound": "Inregistrarea de service nu a fost gasita",
-    "ErrorGeneratingInvoice": "Eroare la generarea facturii"
+    "ErrorGeneratingInvoice": "Eroare la generarea facturii",
+    "NoServiceLogsFound": "Nu s-a efectuat nicio reparatie in cadrul acestei cereri",
+    "ServiceLogsFound": "Aceasta cerere are inregistrari de service"
   },
   "BackendMessages": {
     "UserRegistered": "Utilizator inregistrat cu succes"
@@ -191,7 +193,7 @@
         "Completed": "Finalizat",
         "Stop": "Stop",
         "Reopen": "Re-deschide",
-        "LogWork": "Ponteaza munca",
+        "LogWork": "Inreg. reparatie",
         "Invoice": "Factureaza",
         "Invoiced": "Facturat",
         "UnInvoice": "Invalideaza"

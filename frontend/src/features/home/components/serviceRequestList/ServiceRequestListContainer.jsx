@@ -55,7 +55,8 @@ const ServiceRequestListContainer = () => {
       handleGetServiceRequestList();
     } catch (error) {
       showToast(
-        t("Home.ServiceRequestList.Error.ErrorDeletingRequest"),
+        t(error.response.data.message) ||
+          t("Home.ServiceRequestList.Error.ErrorDeletingRequest"),
         "error"
       );
     }
